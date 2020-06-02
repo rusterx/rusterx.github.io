@@ -1,0 +1,24 @@
+---
+layout: single
+title: 图集目录
+permalink: /gallery/
+---
+
+<div class="main-panel">
+  <h1 class="archive-year">{{ page.title }}</h1>
+  <hr/>
+  <i>提示：使用电脑浏览体验更好！</i>
+  <br/>
+  <br/>
+  <ul>
+    {% for page in site.pages %}
+      {% if page.layout == 'gallery' and page.title %}
+        <li>
+          <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">
+            {{ page.title }}
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>

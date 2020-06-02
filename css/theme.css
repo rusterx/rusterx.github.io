@@ -1,0 +1,141 @@
+/* stick to footer */
+html, body{
+    height:100%;
+    margin:0;
+    padding:0;
+}
+
+body {
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,sans-serif;
+    word-break: break-all;
+    background-color: #e9e9e9 !important;
+}
+
+/* 手机文章 */
+@media screen and (max-width: 750px) {
+    article{
+        background-color: #f8f8f8 !important;
+        border: 1px solid #dbdbdb !important;
+        padding: 10px 20px;
+        margin: 40px 0px;
+    }
+    .main-panel{
+        background-color: #f8f8f8 !important;
+        border: 1px solid #dbdbdb !important;
+        padding: 10px 20px;
+        margin: 40px 0px;
+        padding-bottom: 60px;
+    }
+}
+
+/* 电脑文章 */
+@media screen and (min-width: 750px) {
+    article{
+        background-color: #f8f8f8 !important;
+        border: 1px solid #dbdbdb !important;
+        padding: 20px 60px;
+        margin: 40px 0px;
+    }
+    .main-panel{
+        background-color: #f8f8f8 !important;
+        border: 1px solid #dbdbdb !important;
+        padding: 20px 60px;
+        margin: 40px 0px;
+        padding-bottom: 60px;
+    }
+}
+
+.archive-list a{
+    line-height: 1.8em;
+    font-size: 14px;
+}
+
+.archive-list{
+    margin-bottom: 40px;
+}
+
+content p{
+    text-align: justify;
+    color: #444;
+    line-height: 1.8;
+    font-size: 16px;
+    margin: 10px 0px;
+}
+
+article img{
+    max-width: 100%;
+    display: block;
+    margin: 30px auto;
+}
+
+article ul{
+    margin: 10px 0px;
+    font-size: 16px;
+}
+
+/* 侧边栏 */
+aside{
+    padding: 20px 30px;
+    margin: 40px 0px;
+    display:block;
+    background-color: #f8f8f8 !important;
+    border: 1px solid #dbdbdb !important;
+}
+
+aside a{
+    display: block;
+    margin: 10px 0;
+    color: #555;
+}
+
+/* 底部 */
+footer {
+    text-align: center;
+    margin: 0px;
+}
+
+footer a {
+    color: #ee4444;
+}
+
+.copyright {
+    color: #ffffff;
+    margin: 0;
+    line-height: 30px;
+}
+
+pre{
+    border: 1px solid #f0f0f0;
+}
+
+.btn{
+    border-radius: 0px;
+}
+
+.container-fluid{
+    padding: 0px;
+}
+
+/* stick to footer */
+.wrapper{
+    min-height: 100%;
+}
+
+.main{
+    max-width: 840px;
+    padding-bottom: 30px;
+    padding-top: 60px;
+}
+
+.footer{
+    margin-top: -30px;
+    height: 30px;
+}
+
+.pagination{
+    margin-bottom: 40px;
+}
+
+hr {
+    border-top: 2px solid #e9e9e9 !important
+}

@@ -1,0 +1,13 @@
+<!-- 最新的文章 -->
+<aside>
+  <h1><span class="glyphicon glyphicon-book"></span> 最近文章</h1>
+  <hr/>
+  {% for post in site.posts limit:5 %}
+  <a href="{{ site.baseurl}}{{ post.url }}">{{ post.title }}</a>
+  {% endfor %}
+</aside>
+
+<!-- 外链 -->
+<aside>
+  {% include links-list.html %}
+</aside>
