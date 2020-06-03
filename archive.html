@@ -2,7 +2,7 @@
 layout: single
 ---
 
-<div class="main-panel archive">
+<article class="archive">
     {%for post in site.posts %}
         {% unless post.next %}
             <h1 class="archive-year">{{ post.date | date: '%Y' }}</h1>
@@ -21,4 +21,4 @@ layout: single
         <li><a href="{{ site.baseurl}}{{ post.url }}">{{ post.date | date: "%m/%d" }} - {{ post.title }}</a></li>
     {% endfor %}
     </ul>
-</div>
+</article>

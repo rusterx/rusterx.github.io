@@ -17,11 +17,6 @@ body {
         padding: 10px 20px;
         margin: 40px 0px;
     }
-    .main-panel{
-        padding: 10px 20px;
-        margin: 40px 0px;
-        padding-bottom: 60px;
-    }
 }
 
 /* 电脑文章 */
@@ -30,29 +25,11 @@ body {
         padding: 20px 60px;
         margin: 40px 0px;
     }
-    .main-panel{
-        padding: 20px 60px;
-        margin: 40px 0px;
-        padding-bottom: 60px;
-    }
 }
 
 article{
     background-color: #f8f8f8 !important;
     border: 1px solid #dbdbdb !important;
-}
-
-.main-panel{
-    background-color: #f8f8f8 !important;
-    border: 1px solid #dbdbdb !important;
-}
-
-.main-panel p{
-    text-align: justify;
-    color: #444;
-    line-height: 1.8;
-    font-size: 16px;
-    margin: 10px 0px;
 }
 
 .archive-list a{
@@ -67,7 +44,7 @@ article{
 article p{
     text-align: justify;
     color: #444;
-    line-height: 1.8;
+    line-height: 1.8em;
     font-size: 16px;
     margin: 10px 0px;
 }
@@ -79,8 +56,8 @@ article img{
 }
 
 article ul{
-    margin: 10px 0px;
     font-size: 16px;
+    line-height: 1.8em;
 }
 
 /* 侧边栏 */
