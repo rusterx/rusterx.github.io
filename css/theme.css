@@ -14,14 +14,10 @@ body {
 /* 手机文章 */
 @media screen and (max-width: 750px) {
     article{
-        background-color: #f8f8f8 !important;
-        border: 1px solid #dbdbdb !important;
         padding: 10px 20px;
         margin: 40px 0px;
     }
     .main-panel{
-        background-color: #f8f8f8 !important;
-        border: 1px solid #dbdbdb !important;
         padding: 10px 20px;
         margin: 40px 0px;
         padding-bottom: 60px;
@@ -31,18 +27,32 @@ body {
 /* 电脑文章 */
 @media screen and (min-width: 750px) {
     article{
-        background-color: #f8f8f8 !important;
-        border: 1px solid #dbdbdb !important;
         padding: 20px 60px;
         margin: 40px 0px;
     }
     .main-panel{
-        background-color: #f8f8f8 !important;
-        border: 1px solid #dbdbdb !important;
         padding: 20px 60px;
         margin: 40px 0px;
         padding-bottom: 60px;
     }
+}
+
+article{
+    background-color: #f8f8f8 !important;
+    border: 1px solid #dbdbdb !important;
+}
+
+.main-panel{
+    background-color: #f8f8f8 !important;
+    border: 1px solid #dbdbdb !important;
+}
+
+.main-panel p{
+    text-align: justify;
+    color: #444;
+    line-height: 1.8;
+    font-size: 16px;
+    margin: 10px 0px;
 }
 
 .archive-list a{
