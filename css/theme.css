@@ -32,11 +32,6 @@ article{
     border: 1px solid #dbdbdb !important;
 }
 
-.archive-list a{
-    line-height: 1.8em;
-    font-size: 14px;
-}
-
 .archive-list{
     margin-bottom: 40px;
 }
