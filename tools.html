@@ -71,7 +71,7 @@
 
     <!-- option1 -->
     <div class="form-horizontal">
-        <!-- group -->
+        <!-- 质量分数 -->
         <div class="form-group">
             <label for="mws" class="col-sm-1 col-xs-3 form-label">质量分数</label>
             <div class="col-sm-11 col-xs-9">
@@ -82,7 +82,7 @@
             </div>
         </div>
 
-        <!-- group -->
+        <!-- 溶质质量 -->
         <div class="form-group" v-if="r_status == 'option2'">
             <label for="concentration" class="col-sm-1 col-xs-3 form-label">溶质质量</label>
             <div class="col-sm-11 col-xs-9">
@@ -93,7 +93,7 @@
             </div>
         </div>
 
-        <!-- group -->
+        <!-- 浓度 -->
         <div class="form-group">
             <label for="concentration" class="col-sm-1 col-xs-3 form-label">浓度</label>
             <div class="col-sm-11 col-xs-9">
@@ -104,11 +104,12 @@
             </div>
         </div>
 
-
+        <!-- 计算按钮 -->
         <div class="text-right">
             <button type="submit" class="btn btn-primary" v-on:click="calc">计算</button>
         </div>
 
+        <!-- 选项1的结果 -->
         <table class="table table-striped table-bordered" v-if="option1_rows.length" style="margin-top:10px">
             <thead>
                 <tr>
@@ -124,6 +125,7 @@
             </tbody>
         </table>
 
+        <!-- 选项2的结果 -->
         <table class="table table-striped table-bordered" v-if="option2_rows.length" style="margin-top:10px">
             <thead>
                 <tr>
@@ -153,12 +155,12 @@
             concentration:'',
             mws: '411.97',
             mw_opts: [
-                {name: 'HAuCl4', value: 411.97},
+                {name: '氯金酸（HAuCl4·4H2O，411.97）', value: 411.97},
                 {name: 'CTAB', value: 364.45},
                 {name: 'NaBH4', value: 37.83},
                 {name: 'AA', value: 176.12},
                 {name: 'AgNO3', value: 169.87},
-                {name: '柠檬酸钠', value: 294.1},
+                {name: '二水合柠檬酸钠（Na3C6H5O7·2H2O，294.1）', value: 294.1},
                 {name: '单宁酸', value: 1701.2},
                 {name: 'Fe(NO3)3', value: 241.86}
             ]
