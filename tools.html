@@ -97,7 +97,7 @@
             <label for="concentration" class="col-sm-1 col-xs-3 form-label">浓度</label>
             <div class="col-sm-11 col-xs-9">
                 <div class="input-group">
-                    <input type="email" class="form-control" v-model="concentration">
+                    <input type="email" class="form-control" v-model="concentration" v-on:keyup.enter="calc">
                     <div class="input-group-addon">M</div>
                 </div>
             </div>
