@@ -13,61 +13,68 @@
     <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
 </head>
 <body>
-    <!-- https://blog.csdn.net/lishuai_it_trip/article/details/97614556 -->
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container-fluid"> 
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">工具集合</a>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#boxs">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="boxs">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">溶液配制</a></li>
-                </ul>
-            </div>
+
+<!-- https://blog.csdn.net/lishuai_it_trip/article/details/97614556 -->
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid"> 
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">工具集合</a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#boxs">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
         </div>
-    </nav>
+        <div class="collapse navbar-collapse" id="boxs">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">溶液配制</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
  <div class="container-fluid" id="app">
     <div class="radio">
         <label>
-          <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-          根据溶质的质量分数和浓度，显示常见体积的溶液需要的溶质质量
+          <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" v-model="r_status" checked>
+          根据溶质的质量分数和浓度，显示常见体积的溶液需要的溶质质量；
         </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-          根据溶质的质量分数，质量以及所需的浓度，得到需要加入的水的体积；
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-          根据密度，百分比浓度（质量），质量分数计算摩尔浓度
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4">
-          根据质量百分比、质量分数计算摩尔浓度
-        </label>
-      </div>
+    </div>
 
-      <div class="form-horizontal">
-        <p v-if="errors.length">
-            <b>请将修正以下错误:</b>
-            <ul>
-              <li v-for="error in errors">{{ error }}</li>
-            </ul>
-        </p>
+    <div class="radio">
+        <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" v-model="r_status">
+            根据溶质的质量分数，质量以及所需的浓度，得到需要加入的水的体积（配制氯金酸母液时有效）；
+        </label>
+    </div>
+
+    <div class="radio">
+        <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" v-model="r_status">
+            根据密度，百分比浓度（质量），质量分数计算摩尔浓度；
+        </label>
+    </div>
+
+    <div class="radio">
+        <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4" v-model="r_status">
+            根据质量百分比、质量分数计算摩尔浓度；
+        </label>
+    </div>
+
+    <p v-if="errors.length">
+        <b>请将修正以下错误:</b>
+        <ul>
+            <li v-for="error in errors" style="color:red">{{ error }}</li>
+        </ul>
+    </p>
+
+    <!-- option1 -->
+    <div class="form-horizontal">
         <!-- group -->
         <div class="form-group">
-            <label for="mws" class="col-sm-1 col-xs-2 form-label">质量分数</label>
-            <div class="col-sm-11 col-xs-10">
+            <label for="mws" class="col-sm-1 col-xs-3 form-label">质量分数</label>
+            <div class="col-sm-11 col-xs-9">
                 <!-- https://blog.csdn.net/yunhuaikong/article/details/96868171 -->
                 <select class="form-control" v-model="mws">
                     <option v-for="(item, index) of mw_opts" :value="item.value" :key="item.key">{{ item.name }}</option>
@@ -76,22 +83,33 @@
         </div>
 
         <!-- group -->
+        <div class="form-group" v-if="r_status == 'option2'">
+            <label for="concentration" class="col-sm-1 col-xs-3 form-label">溶质质量</label>
+            <div class="col-sm-11 col-xs-9">
+                <div class="input-group">
+                    <input type="email" class="form-control" v-model="quality" placeholder="质量">
+                    <div class="input-group-addon">g</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- group -->
         <div class="form-group">
-            <label for="concentration" class="col-sm-1 col-xs-2 form-label">浓度</label>
-            <div class="col-sm-11 col-xs-10">
+            <label for="concentration" class="col-sm-1 col-xs-3 form-label">浓度</label>
+            <div class="col-sm-11 col-xs-9">
                 <div class="input-group">
                     <input type="email" class="form-control" v-model="concentration" placeholder="浓度">
                     <div class="input-group-addon">M</div>
                 </div>
-              </div>
+            </div>
         </div>
-      </div>
+
 
         <div class="text-right">
             <button type="submit" class="btn btn-primary" v-on:click="calc">计算</button>
         </div>
 
-        <table class="table table-striped table-bordered" v-if="rows.length" style="margin-top:10px">
+        <table class="table table-striped table-bordered" v-if="option1_rows.length" style="margin-top:10px">
             <thead>
                 <tr>
                     <td>体积</td>
@@ -99,22 +117,38 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="row in rows">
+                <tr v-for="row in option1_rows">
                     <td>{{ row.volume }}</td>
                     <td>{{ row.weight }}</td>
                 </tr>
             </tbody>
         </table>
+
+        <table class="table table-striped table-bordered" v-if="option2_rows.length" style="margin-top:10px">
+            <thead>
+                <tr>
+                    <td>溶质质量</td>
+                    <td>水的体积</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="row in option2_rows">
+                    <td>{{ row.weight }}</td>
+                    <td>{{ row.volume }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-
-
  </div>
 
  <script type="text/JavaScript">
     var vm = new Vue({
         el:'#app',
         data: {
-            rows: [],
+            quality:'',
+            r_status: 'option1',
+            option1_rows: [],
+            option2_rows: [],
             errors: [],
             concentration:'',
             mws: '411.97',
@@ -132,22 +166,53 @@
         methods:{
             calc:function(e){
                 this.errors = [];
-                this.rows = [];
-                if (!this.concentration) {
-                    this.errors.push('浓度不可以为空！');
-                }
+                this.option1_rows = [];
+                this.option2_rows = [];
 
-                if (!this.errors.length) {
+                if (this.r_status == 'option1'){
+                    if (!this.concentration) {
+                        this.errors.push('浓度不可以为空！');
+                    }
+
+                    if (this.errors.length) {
+                        return;
+                    }
+
                     var c = parseFloat(this.concentration);
                     var q = parseFloat(this.mws);
                     var max_mass = 0.2 * q * c;
+
                     for (var i = 10; i <=200; i=i+10) {
                         var w = max_mass*i/200
-                        this.rows.push({
+                        this.option1_rows.push({
                             volume: i + ' mL',
                             weight: w.toFixed(4) + ' g'
                         });
                     }
+                }
+
+                if (this.r_status == 'option2'){
+                    if (!this.concentration) {
+                        this.errors.push('浓度不可以为空！');
+                    }
+
+                    if(!this.quality){
+                        this.errors.push('质量不可以为空！');
+                    }
+
+                    if (this.errors.length) {
+                        return;
+                    }
+
+                    var c = parseFloat(this.concentration);
+                    var q = parseFloat(this.mws);
+                    var m = parseFloat(this.quality);
+                    var v = 1000*m/(q * c);
+
+                    this.option2_rows.push({
+                        weight: m + ' g',
+                        volume: v.toFixed(4) + ' mL'
+                    });
                 }
 
                 e.preventDefault();
