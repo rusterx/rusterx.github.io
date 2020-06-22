@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js"></script>
+    <script src="https://unpkg.com/vue-select@3.0.0"></script>
+    <link rel="stylesheet" href="https://unpkg.com/vue-select@3.0.0/dist/vue-select.css">
 </head>
 <body>
 
@@ -75,9 +77,11 @@
             <label for="mws" class="col-sm-1 col-xs-3 form-label">质量分数</label>
             <div class="col-sm-11 col-xs-9">
                 <!-- https://blog.csdn.net/yunhuaikong/article/details/96868171 -->
-                <select class="form-control" id="mws" v-model="mws">
+                <!-- <select class="form-control" id="mws" v-model="mws">
                     <option v-for="(item, index) of mw_opts" :value="item.value" :key="item.key">{{ item.name }}</option>
-                </select>   
+                </select>   -->
+                
+                <v-select label="name" :options="mw_opts" v-model="mws"></v-select>
             </div>
         </div>
 
@@ -198,6 +202,7 @@
 
  <!-- 搜索分子的摩尔重量：https://pubchem.ncbi.nlm.nih.gov/compound/N-Vinyl-2-pyrrolidone -->
  <script type="text/JavaScript">
+    Vue.component('v-select', VueSelect.VueSelect);
     var vm = new Vue({
         el:'#app',
         data: {
@@ -211,7 +216,7 @@
             concentration:'',
             weight_percent:'',
             density:'',
-            mws: '411.97',
+            mws: {name: '氯金酸(HAuCl4·4H2O, 411.97)', value: 411.97},
             mw_opts: [
                 {name: '氯金酸(HAuCl4·4H2O, 411.97)', value: 411.97},
                 {name: '十六烷基三甲基溴化铵(CTAB, 364.45)', value: 364.45},
@@ -220,6 +225,9 @@
                 {name: '抗坏血酸(AA, 176.12)', value: 176.12},
                 {name: '硝酸银(AgNO3, 169.87)', value: 169.87},
                 {name: '硫酸(H2SO4, 98.078)', value: 98.078},
+                {name: '硝酸(HNO3, 63.01)', value: 63.01},
+                {name: '盐酸(HCl, 36.5)', value: 36.5},
+                {name: '辛胺(Octylamine, 129.24)', value: 129.24},
                 {name: '氨水(NH3·H2O, 17.031)', value: 17.031},
                 {name: '半胱氨酸(Cysteine, 121.02)', value: 121.02},
                 {name: '谷胱甘肽(Glutathione或GSH, 307.33)', value: 307.323},
@@ -246,7 +254,7 @@
                     }
 
                     var c = parseFloat(this.concentration);
-                    var q = parseFloat(this.mws);
+                    var q = parseFloat(this.mws.value);
                     var max_mass = 0.2 * q * c;
 
                     for (var i = 10; i <=200; i=i+10) {
@@ -272,7 +280,7 @@
                     }
 
                     var c = parseFloat(this.concentration);
-                    var q = parseFloat(this.mws);
+                    var q = parseFloat(this.mws.value);
                     var m = parseFloat(this.quality);
                     var v = 1000*m/(q * c);
 
@@ -295,7 +303,7 @@
                     }
 
                     var rho = parseFloat(this.density);
-                    var q = parseFloat(this.mws);
+                    var q = parseFloat(this.mws.value);
                     var wp = parseFloat(this.weight_percent);
                     var mc = 10*wp*rho/q;
                     var mcf = mc.toFixed(4) + ' M';
@@ -321,7 +329,7 @@
                     }
 
                     var ratio = parseFloat(this.weight_percent);
-                    var q = parseFloat(this.mws);
+                    var q = parseFloat(this.mws.value);
                     var mc = ratio*10/q;
                     var mcf = mc.toFixed(4) + ' M';
                     if (mc < 1){
