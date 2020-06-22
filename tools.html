@@ -43,21 +43,21 @@
     <div class="radio">
         <label>
             <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" v-model="r_status">
-            根据溶质的质量分数，质量以及所需的浓度，得到需要加入的水的体积（配制氯金酸母液时有效）；
+            根据溶质的质量分数，质量以及所需的浓度，得到需要加入的水的体积，常用于配制氯金酸母液；
         </label>
     </div>
 
-    <div class="radio" disabled>
+    <div class="radio">
         <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" v-model="r_status" disabled>
-            根据密度，百分比浓度（质量），质量分数计算摩尔浓度；
+            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" v-model="r_status">
+            根据密度，百分比浓度（质量），质量分数计算摩尔浓度，主要用于浓溶液的稀释；
         </label>
     </div>
 
-    <div class="radio" disabled>
+    <div class="radio">
         <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4" v-model="r_status" disabled>
-            根据质量百分比、质量分数计算摩尔浓度；
+            <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4" v-model="r_status">
+            根据质量百分比、质量分数计算摩尔浓度。
         </label>
     </div>
 
@@ -75,7 +75,7 @@
             <label for="mws" class="col-sm-1 col-xs-3 form-label">质量分数</label>
             <div class="col-sm-11 col-xs-9">
                 <!-- https://blog.csdn.net/yunhuaikong/article/details/96868171 -->
-                <select class="form-control" v-model="mws">
+                <select class="form-control" id="mws" v-model="mws">
                     <option v-for="(item, index) of mw_opts" :value="item.value" :key="item.key">{{ item.name }}</option>
                 </select>   
             </div>
@@ -83,22 +83,56 @@
 
         <!-- 溶质质量 -->
         <div class="form-group" v-if="r_status == 'option2'">
-            <label for="concentration" class="col-sm-1 col-xs-3 form-label">溶质质量</label>
+            <label for="quality" class="col-sm-1 col-xs-3 form-label">溶质质量</label>
             <div class="col-sm-11 col-xs-9">
                 <div class="input-group">
-                    <input type="email" class="form-control" v-model="quality">
+                    <input type="text" class="form-control" id="quality" v-model="quality">
                     <div class="input-group-addon">g</div>
                 </div>
             </div>
         </div>
 
-        <!-- 浓度 -->
-        <div class="form-group">
+        <!-- 摩尔浓度 -->
+        <div class="form-group" v-if="r_status == 'option1' || r_status == 'option2'">
             <label for="concentration" class="col-sm-1 col-xs-3 form-label">浓度</label>
             <div class="col-sm-11 col-xs-9">
                 <div class="input-group">
-                    <input type="email" class="form-control" v-model="concentration" v-on:keyup.enter="calc">
+                    <input type="text" class="form-control" id="concentration" v-model="concentration" v-on:keyup.enter="calc">
                     <div class="input-group-addon">M</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 密度 -->
+        <div class="form-group" v-if="r_status == 'option3'">
+            <label for="density" class="col-sm-1 col-xs-3 form-label">密度</label>
+            <div class="col-sm-11 col-xs-9">
+                <div class="input-group">
+                    <input type="text" id="density" class="form-control" v-model="density">  
+                    <div class="input-group-addon">g/mL</div>                  
+                </div>
+            </div>
+        </div>
+
+        <!-- 体积百分比 -->
+        <div class="form-group" v-if="r_status == 'option3'">
+            <label for="volume_percent" class="col-sm-1 col-xs-3 form-label">体积百分比</label>
+            <div class="col-sm-11 col-xs-9">
+                <div class="input-group">
+                    <input type="text" id="volume_percent" class="form-control" v-model="volume_percent" v-on:keyup.enter="calc">
+                    <div class="input-group-addon">v %</div>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- 质量百分比 -->
+        <div class="form-group" v-if="r_status == 'option4'">
+            <label for="weight_percent" class="col-sm-1 col-xs-3 form-label">质量百分比</label>
+            <div class="col-sm-11 col-xs-9">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="weight_percent" v-model="weight_percent" v-on:keyup.enter="calc">
+                    <div class="input-group-addon">wt %</div>
                 </div>
             </div>
         </div>
@@ -139,6 +173,38 @@
                 </tr>
             </tbody>
         </table>
+
+        <!-- 选项3的结果 -->
+        <table class="table table-striped table-bordered" v-if="option3_rows.length" style="margin-top:10px">
+            <thead class="thead-light">
+                <tr>
+                    <td scope="col">体积百分比</td>
+                    <td scope="col">摩尔浓度</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="row in option3_rows" scope="row">
+                    <td>{{ row.vp }}</td>
+                    <td>{{ row.mc }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 选项4的结果 -->
+        <table class="table table-striped table-bordered" v-if="option4_rows.length" style="margin-top:10px">
+            <thead class="thead-light">
+                <tr>
+                    <td scope="col">质量百分比</td>
+                    <td scope="col">摩尔浓度</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="row in option4_rows" scope="row">
+                    <td>{{ row.wp }}</td>
+                    <td>{{ row.mc }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
  </div>
 
@@ -150,8 +216,13 @@
             r_status: 'option1',
             option1_rows: [],
             option2_rows: [],
+            option3_rows: [],
+            option4_rows: [],
             errors: [],
             concentration:'',
+            weight_percent:'',
+            volume_percent:'',
+            density:'',
             mws: '411.97',
             mw_opts: [
                 {name: '氯金酸（HAuCl4·4H2O，411.97）', value: 411.97},
@@ -159,6 +230,7 @@
                 {name: 'NaBH4', value: 37.83},
                 {name: 'AA', value: 176.12},
                 {name: 'AgNO3', value: 169.87},
+                {name: 'H2SO4', value: 98.078},
                 {name: '二水合柠檬酸钠（Na3C6H5O7·2H2O，294.1）', value: 294.1},
                 {name: '单宁酸', value: 1701.2},
                 {name: '无水硝酸铁（Fe(NO3)3，241.86）', value: 241.86}
@@ -169,6 +241,8 @@
                 this.errors = [];
                 this.option1_rows = [];
                 this.option2_rows = [];
+                this.option3_rows = [];
+                this.option4_rows = [];
 
                 if (this.r_status == 'option1'){
                     if (!this.concentration) {
@@ -214,6 +288,59 @@
                         weight: m + ' g',
                         volume: v.toFixed(4) + ' mL'
                     });
+                }
+
+                if (this.r_status == 'option3'){
+                    if (!this.density) {
+                        this.errors.push('密度不可以为空！');
+                    }
+                    if (!this.volume_percent) {
+                        this.errors.push('体积百分比不可以为空！');
+                    }
+
+                    if (this.errors.length) {
+                        return;
+                    }
+
+                    var rho = parseFloat(this.density);
+                    var q = parseFloat(this.mws);
+                    var vp = parseFloat(this.volume_percent);
+                    var mc = 10*vp*rho/q;
+                    var mcf = mc.toFixed(4) + ' M';
+
+                    if (mc < 1){
+                        mcf = (mc*1000).toFixed(4) + ' mM';
+                    }
+
+                    this.option3_rows.push({
+                        vp: vp,
+                        mc: mcf
+                    });
+                    
+                }
+
+                if (this.r_status == 'option4'){
+                    if (!this.weight_percent) {
+                        this.errors.push('质量百分比不可以为空！');
+                    }
+
+                    if (this.errors.length) {
+                        return;
+                    }
+
+                    var ratio = parseFloat(this.weight_percent);
+                    var q = parseFloat(this.mws);
+                    var mc = ratio*10/q;
+                    var mcf = mc.toFixed(4) + ' M';
+                    if (mc < 1){
+                        mcf = (mc*1000).toFixed(4) + ' mM';
+                    }
+
+                    this.option4_rows.push({
+                        wp: ratio + ' wt%',
+                        mc: mcf
+                    });
+                    
                 }
 
                 e.preventDefault();
