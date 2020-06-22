@@ -50,14 +50,14 @@
     <div class="radio">
         <label>
             <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" v-model="r_status">
-            根据密度，百分比浓度（质量），质量分数计算摩尔浓度，主要用于浓溶液的稀释；
+            根据密度，百分比浓度（质量），质量分数计算摩尔浓度，可用于浓硝酸、浓硫酸的摩尔浓度计算；
         </label>
     </div>
 
     <div class="radio">
         <label>
             <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4" v-model="r_status">
-            根据质量百分比、质量分数计算摩尔浓度。
+            根据质量百分比、质量分数计算摩尔浓度，用于将质量百分比浓度转换成摩尔浓度。
         </label>
     </div>
 
@@ -114,20 +114,8 @@
             </div>
         </div>
 
-        <!-- 体积百分比 -->
-        <div class="form-group" v-if="r_status == 'option3'">
-            <label for="volume_percent" class="col-sm-1 col-xs-3 form-label">体积百分比</label>
-            <div class="col-sm-11 col-xs-9">
-                <div class="input-group">
-                    <input type="text" id="volume_percent" class="form-control" v-model="volume_percent" v-on:keyup.enter="calc">
-                    <div class="input-group-addon">v %</div>
-                </div>
-            </div>
-        </div>
-        
-
         <!-- 质量百分比 -->
-        <div class="form-group" v-if="r_status == 'option4'">
+        <div class="form-group" v-if="r_status == 'option4' || r_status == 'option3'">
             <label for="weight_percent" class="col-sm-1 col-xs-3 form-label">质量百分比</label>
             <div class="col-sm-11 col-xs-9">
                 <div class="input-group">
@@ -178,13 +166,13 @@
         <table class="table table-striped table-bordered" v-if="option3_rows.length" style="margin-top:10px">
             <thead class="thead-light">
                 <tr>
-                    <td scope="col">体积百分比</td>
+                    <td scope="col">质量百分比</td>
                     <td scope="col">摩尔浓度</td>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="row in option3_rows" scope="row">
-                    <td>{{ row.vp }}</td>
+                    <td>{{ row.wp }}</td>
                     <td>{{ row.mc }}</td>
                 </tr>
             </tbody>
@@ -221,7 +209,6 @@
             errors: [],
             concentration:'',
             weight_percent:'',
-            volume_percent:'',
             density:'',
             mws: '411.97',
             mw_opts: [
@@ -294,8 +281,8 @@
                     if (!this.density) {
                         this.errors.push('密度不可以为空！');
                     }
-                    if (!this.volume_percent) {
-                        this.errors.push('体积百分比不可以为空！');
+                    if (!this.weight_percent) {
+                        this.errors.push('质量百分比不可以为空！');
                     }
 
                     if (this.errors.length) {
@@ -304,8 +291,8 @@
 
                     var rho = parseFloat(this.density);
                     var q = parseFloat(this.mws);
-                    var vp = parseFloat(this.volume_percent);
-                    var mc = 10*vp*rho/q;
+                    var wp = parseFloat(this.weight_percent);
+                    var mc = 10*wp*rho/q;
                     var mcf = mc.toFixed(4) + ' M';
 
                     if (mc < 1){
@@ -313,7 +300,7 @@
                     }
 
                     this.option3_rows.push({
-                        vp: vp + '%',
+                        wp: wp + ' wt%',
                         mc: mcf
                     });
                     
