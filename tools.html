@@ -6,12 +6,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/> 
     <title>工具集合</title>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.12.2/dist/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue-select@3.10.3/dist/vue-select.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-select@3.10.3/dist/vue-select.css">
+    <style>
+    .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn){
+        width:100px;
+    }
+    </style>
 </head>
 <body>
 
@@ -103,7 +105,15 @@
             <div class="col-sm-11 col-xs-9">
                 <div class="input-group">
                     <input type="text" class="form-control" id="concentration" v-model="concentration" v-on:keyup.enter="calc">
-                    <div class="input-group-addon">M</div>
+                    <!-- <div class="input-group-addon">M</div> -->
+                    <div class="input-group-btn">
+                        <select class="select-concentration-unit" v-model="select_concentration_unit">
+                            <option value="1" selected>M</option>
+                            <option value="0.001">mM</option>
+                            <option value="0.000001">μM</option>
+                            <option value="0.000000001">nM</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
@@ -200,13 +210,18 @@
         </table>
     </div>
  </div>
-
+ <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.12.2/dist/js/bootstrap-select.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/vue-select@3.10.3/dist/vue-select.min.js"></script>
  <!-- 搜索分子的摩尔重量：https://pubchem.ncbi.nlm.nih.gov/compound/N-Vinyl-2-pyrrolidone -->
  <script type="text/JavaScript">
     Vue.component('v-select', VueSelect.VueSelect);
     var vm = new Vue({
         el:'#app',
         data: {
+            select_concentration_unit:'1',
             quality:'',
             r_status: 'option1',
             option1_rows: [],
@@ -246,7 +261,7 @@
                 this.option2_rows = [];
                 this.option3_rows = [];
                 this.option4_rows = [];
-
+                var cm = parseFloat(this.select_concentration_unit);
                 if (this.r_status == 'option1'){
                     if (!this.concentration) {
                         this.errors.push('浓度不可以为空！');
@@ -256,7 +271,7 @@
                         return;
                     }
 
-                    var c = parseFloat(this.concentration);
+                    var c = parseFloat(this.concentration) * cm;
                     var q = parseFloat(this.mws.value);
                     var max_mass = 0.2 * q * c;
 
@@ -282,7 +297,7 @@
                         return;
                     }
 
-                    var c = parseFloat(this.concentration);
+                    var c = parseFloat(this.concentration) * cm;
                     var q = parseFloat(this.mws.value);
                     var m = parseFloat(this.quality);
                     var v = 1000*m/(q * c);
@@ -350,6 +365,9 @@
             }
         }
     });
+    $(function() {
+        $('select').selectpicker();
+    })
  </script>
 </body>
 </html>
