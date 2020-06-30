@@ -91,7 +91,7 @@
                     return;
                 }
                 var ewords = encodeURI(this.words);
-                this.$http.get('https://111.229.254.54:5002/query/'+ewords).then(function(res){
+                this.$http.get('https://api.xingtingyang.com:5002/query/'+ewords).then(function(res){
                     console.log(res.body);
                     var content = res.body;
                     if(content.status == 'error'){
