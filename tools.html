@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-select@3.10.3/dist/vue-select.css">
     <style>
     .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn){
-        width:100px;
+        width:70px;
     }
     </style>
 </head>
@@ -108,8 +108,8 @@
                     <!-- <div class="input-group-addon">M</div> -->
                     <div class="input-group-btn">
                         <select class="select-concentration-unit" v-model="select_concentration_unit">
-                            <option value="1" selected>M</option>
-                            <option value="0.001">mM</option>
+                            <option value="1">M</option>
+                            <option value="0.001" selected>mM</option>
                             <option value="0.000001">μM</option>
                             <option value="0.000000001">nM</option>
                         </select>
@@ -221,7 +221,7 @@
     var vm = new Vue({
         el:'#app',
         data: {
-            select_concentration_unit:'1',
+            select_concentration_unit:'0.001',
             quality:'',
             r_status: 'option1',
             option1_rows: [],
