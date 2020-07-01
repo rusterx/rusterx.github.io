@@ -92,6 +92,7 @@
 
                 if(!this.words){
                     this.errors.push('搜索词不可以为空！');
+                    this.loading = false;
                     return;
                 }
                 var ewords = encodeURI(this.words);
