@@ -102,9 +102,6 @@
                         this.errors.push(content.msg);
                     }else{
                         this.jls = content.data;
-                        if(this.jls.length == 0){
-                            this.errors.push('结果为空！');
-                        }
                     }
                 }, function(){
                     console.log('请求失败！');
