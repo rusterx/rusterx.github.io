@@ -47,7 +47,9 @@
         <ul>
           <li v-for="error in errors">{{ error }}</li>
         </ul>
-      </p>
+    </p>
+
+    <vue-simple-spinner size="large" message="加载中..." v-if="loading"></vue-simple-spinner>
 
     <!-- 选项4的结果 -->
     <table class="table table-striped table-bordered" v-if="jls.length">
@@ -72,19 +74,21 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1/dist/vue-resource.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-simple-spinner@1.2.10/dist/vue-simple-spinner.min.js"></script>
 <script>
-
     var vm = new Vue({
         el:'#app',
         data: {
             words:'',
             jls: [],
-            errors: []
+            errors: [],
+            loading:false
         },
         methods:{
             search:function(){
                 this.errors = [];
                 this.jls = [];
+                this.loading = true;
 
                 if(!this.words){
                     this.errors.push('搜索词不可以为空！');
@@ -92,16 +96,17 @@
                 }
                 var ewords = encodeURI(this.words);
                 this.$http.get('https://api.xingtingyang.com:5002/query/'+ewords).then(function(res){
-                    console.log(res.body);
                     var content = res.body;
                     if(content.status == 'error'){
-                        this.errors.push(content.msg)
+                        this.errors.push(content.msg);
                     }else{
                         this.jls = content.data;
                     }
                 }, function(){
                     console.log('请求失败！');
-                })
+                }).finally(function(){
+                    this.loading = false;
+                });
             }
         }
     });
