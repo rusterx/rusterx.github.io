@@ -5,7 +5,7 @@
     <!-- https://www.jsdelivr.com/ -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/> 
-    <title>工具集合</title>
+    <title>工具集合 - 影响因子查询</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
 </head>
 <body>
@@ -34,7 +34,7 @@
 <div class="container-fluid" id="app">
     <div class="form-group">
         <div class="input-group">
-            <input type="text" class="form-control" id="words" v-model="words" v-on:keyup.enter="search">
+            <input type="text" class="form-control" id="words" v-model="words" v-on:keyup.enter="search" placeholder="请输入期刊标题">
             <div class="input-group-btn">
                 <button type="submit" class="btn btn-primary" v-on:click="search">查询</button>
             </div>
