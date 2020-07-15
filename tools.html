@@ -275,12 +275,15 @@
 
                     var c = parseFloat(this.concentration) * cm;
                     var q = parseFloat(this.mws.value);
+                    // 0.2代表0.2 ml
                     var max_mass = 0.2 * q * c;
+                    var volumes = [5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 150, 200, 300, 500, 1000];
 
-                    for (var i = 10; i <=200; i=i+10) {
-                        var w = max_mass*i/200
+                    for (let index = 0; index < volumes.length; index++) {
+                        const volume = volumes[index];
+                        var w = max_mass*volume/200
                         this.option1_rows.push({
-                            volume: i + ' mL',
+                            volume: volume + ' mL',
                             weight: w.toFixed(5) + ' g'
                         });
                     }
