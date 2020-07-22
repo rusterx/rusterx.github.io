@@ -101,7 +101,7 @@ sudo mysql -uroot -p
 - 修改root用户的密码
 
 ```sql
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '4DTBLttH91Wc';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
 ```
 
 ## SSL证书安装
