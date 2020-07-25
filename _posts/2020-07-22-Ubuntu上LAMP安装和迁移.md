@@ -136,3 +136,15 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost
 ```
+
+查看配置文件位置
+
+```bash
+apachectl -S
+```
+
+重定向配置
+
+```text
+Redirect permanent / https://www.yourdomain.com/
+```
