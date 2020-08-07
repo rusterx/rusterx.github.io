@@ -9,9 +9,10 @@ $(window).load(function(){
     }
     // right
     if(e.keyCode == 39) {
-      alert('This');
       var nextList = $('next');
+      console.log(nextList.length);
       if(nextList.length != 0){
+        console.log(nextList[0]);
         nextList[0].click();
       }
     }
