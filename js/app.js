@@ -4,7 +4,8 @@ $(window).load(function(){
     if(e.keyCode == 37) {
       var preList = $('previous');
       if(preList.length != 0){
-        preList[0].click();
+        var path = $(preList[0]).attr('href');
+        window.location = 'https://xingtingyang.com' + path;
       }
     }
     // right
@@ -12,8 +13,8 @@ $(window).load(function(){
       var nextList = $('next');
       console.log(nextList.length);
       if(nextList.length != 0){
-        console.log(nextList[0]);
-        nextList[0].click();
+        var path = $(nextList[0]).attr('href');
+        window.location = 'https://xingtingyang.com' + path;
       }
     }
   });
