@@ -1,5 +1,5 @@
 $(window).load(function(){
-  $("body").keydown(function(e) {
+  $(document).keydown(function(e) {
     // left
     if(e.keyCode == 37) {
       var preList = $('previous');
