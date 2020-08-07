@@ -9,6 +9,7 @@ $(window).load(function(){
     }
     // right
     if(e.keyCode == 39) {
+      alert('This');
       var nextList = $('next');
       if(nextList.length != 0){
         nextList[0].click();
