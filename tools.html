@@ -39,6 +39,7 @@
 </nav>
 
  <div class="container-fluid" id="app">
+
     <div class="radio">
         <label>
           <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" v-model="r_status" checked>
@@ -66,6 +67,10 @@
             根据质量百分比、质量分数计算摩尔浓度，<span style="color:red;">用于将质量百分比浓度转换成摩尔浓度</span>。
         </label>
     </div>
+
+    <blockquote>
+        如果物质列表中暂未检索找到所需化学物质，可直接输入该物质的质量分数，单击添加后作为临时计算参数，如需永久生效，请联系管理员添加。
+    </blockquote>
 
     <p v-if="errors.length">
         <b>请修正以下错误:</b>
@@ -267,6 +272,13 @@
                 this.option3_rows = [];
                 this.option4_rows = [];
                 var cm = parseFloat(this.select_concentration_unit);
+                var q = parseFloat(this.mws.value);
+
+                // NaN为数字
+                if(isNaN(q)){
+                    this.errors.push('物质的质量分数必须为数字！');
+                }
+
                 if (this.r_status == 'option1'){
                     if (!this.concentration) {
                         this.errors.push('浓度不可以为空！');
@@ -277,7 +289,6 @@
                     }
 
                     var c = parseFloat(this.concentration) * cm;
-                    var q = parseFloat(this.mws.value);
                     // 0.2代表0.2 ml
                     var max_mass = 0.2 * q * c;
                     var volumes = [5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 150, 200, 300, 500, 1000];
@@ -306,7 +317,6 @@
                     }
 
                     var c = parseFloat(this.concentration) * cm;
-                    var q = parseFloat(this.mws.value);
                     var m = parseFloat(this.quality);
                     var v = 1000*m/(q * c);
 
@@ -329,7 +339,6 @@
                     }
 
                     var rho = parseFloat(this.density);
-                    var q = parseFloat(this.mws.value);
                     var wp = parseFloat(this.weight_percent);
                     var mc = 10*wp*rho/q;
                     var mcf = mc.toFixed(4) + ' M';
@@ -355,7 +364,6 @@
                     }
 
                     var ratio = parseFloat(this.weight_percent);
-                    var q = parseFloat(this.mws.value);
                     var mc = ratio*10/q;
                     var mcf = mc.toFixed(4) + ' M';
                     if (mc < 1){
