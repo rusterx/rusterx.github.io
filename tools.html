@@ -111,7 +111,7 @@
                     <input type="text" class="form-control" id="concentration" v-model="concentration" v-on:keyup.enter="calc">
                     <!-- <div class="input-group-addon">M</div> -->
                     <div class="input-group-btn">
-                        <select class="select-concentration-unit" v-model="select_concentration_unit" v-if="r_status == 'option1' || r_status == 'option2'">
+                        <select class="select-concentration-unit" v-model="select_concentration_unit">
                             <option value="1">M</option>
                             <option value="0.001" selected>mM</option>
                             <option value="0.000001">μM</option>
