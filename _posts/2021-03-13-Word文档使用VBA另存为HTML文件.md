@@ -45,3 +45,7 @@ oNewDocument.Close SaveChanges:=False
 ```vb
 Set oNewDocument = Nothing
 ```
+
+在将这个vba脚本和一个按钮对应起来，这样以后，只需要点击一个按钮，就可以生成该Word文档的HTML版本，非常方便。
+
+![](https://jekyll-1251110281.file.myqcloud.com/images/示例文件_20210317_compressed_masked.jpg)
