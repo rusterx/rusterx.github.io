@@ -42,7 +42,7 @@
 				dataid = getSearchParams('fsid');
 			}
 
-			var url = 'http://pan.xingtingyang.com:5000/get_dlink/'+dataid;
+			var url = 'https://pan.xingtingyang.com:5000/get_dlink/'+dataid;
 			
 			$.get(url, function(res){
 				player.attr('src', res);
