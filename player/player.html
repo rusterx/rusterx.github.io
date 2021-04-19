@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>plyr.js</title>
+<!-- Styles -->
+<link rel="stylesheet" href="dist/plyr.css">
+<!-- Plyr core script -->
+<script src="dist/plyr.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+<style>
+	body{background-color: #262626}
+	.m{ margin-left: auto; margin-right: auto; width: 640px; margin-top: 100px; }
+	
+</style>
+</head>
+
+<body>
+
+<div class="m">
+
+	<video poster="vs.png" controls>
+	  <source class="media-player" data-id='[482733421690165]' src="" type="video/mp4">
+	  <!-- <source src="/path/to/video.webm" type="video/webm">-->
+	  <!-- Captions are optional -->
+	</video>
+
+	<script>
+		// 解析网址参数
+		function getSearchParams(k){
+			var p={};
+			location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){p[k]=v})
+			return k?p[k]:p;
+		}
+		// 文档准备好的时候处理
+		$(document).ready(function(){
+			var player = $('.media-player');
+
+			var dataid = player.attr('data-id');
+			if(getSearchParams('fsid') !=''){
+				dataid = getSearchParams('fsid');
+			}
+
+			var url = 'http://pan.xingtingyang.com:5000/get_dlink/'+dataid;
+			
+			$.get(url, function(res){
+				player.attr('src', res);
+				plyr.setup();
+			});
+		});
+	</script>
+</div>
+
+</body>
+</html>
