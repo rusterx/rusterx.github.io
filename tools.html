@@ -6,9 +6,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/> 
     <title>工具集合 - 溶液配制</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.12.2/dist/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+
+    <link href="https://unpkg.com/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://unpkg.com/bootstrap-vue@2.13.0/dist/bootstrap-vue.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-select@3.10.3/dist/vue-select.css">
+    
+    <!-- 用于数据处理 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-vue@2.13.0/dist/bootstrap-vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-select@3.10.3/dist/vue-select.min.js"></script>
+
     <style>
     .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn){
         width:70px;
@@ -28,60 +35,73 @@
         width:-webkit-calc(70px);
         width: calc(70px);
     }
+    .navbar-backdrop {
+        z-index: 1029;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    .content{
+        padding-top: 15px;
+    }
     </style>
+
+
 </head>
 <body>
 
-<!-- https://blog.csdn.net/lishuai_it_trip/article/details/97614556 -->
-<nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid"> 
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">工具集合</a>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#boxs">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div class="collapse navbar-collapse" id="boxs">
-            <ul class="nav navbar-nav">
-                <li><a href="https://xingtingyang.com/">博客</a></li>
-                <li><a href="https://xingtingyang.com/ifactor.html">影响因子查询</a></li>
-                <li class="active"><a href="https://xingtingyang.com/tools.html">溶液配制</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
 
- <div class="container-fluid" id="app">
-    <blockquote>
+ <div id="app">
+     <!-- 菜单 -->
+    <b-navbar toggleable="xl" variant="light" type="light">
+        <b-navbar-brand class="header-name" :to="{name: '#'}">工具集合</b-navbar-brand>
+        <b-navbar-toggle class="custom-toggler" target="nav-collapse"></b-navbar-toggle>
+        <b-collapse v-model="isNavbarCollapseOpen" id="nav-collapse" is-nav>
+            <!-- Right aligned nav items -->
+            <b-navbar-nav class="ml-auto">
+            <b-nav-form></b-nav-form>
+            <b-nav-item href='https://xingtingyang.com'>博客</b-nav-item>
+            <b-nav-item href='https://xingtingyang.com/ifactor.html'>影响因子查询</b-nav-item>
+            <b-nav-item href='https://xingtingyang.com/tools.html'>溶液配制</b-nav-item>
+            </b-navbar-nav>
+        </b-collapse>
+    </b-navbar>
+    <div v-if="isNavbarCollapseOpen" @click="isNavbarCollapseOpen = false" class="navbar-backdrop"></div>
+
+    <div class="container-fluid content">
+
+    <blockquote class="blockquote">
         如需临时计算材料库中未包含的物质，请直接输入该物质的分子质量。
     </blockquote>
 
-    <div class="radio">
-        <label>
-          <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" v-model="r_status" checked>
-          根据溶质的质量分数和浓度，计算配置一定体积的溶液所需的溶质质量；
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios1" value="option1" v-model="r_status" checked>
+        <label for="optionsRadios1" class="form-check-label">
+            根据溶质的质量分数和浓度，计算配置一定体积的溶液所需的溶质质量；
         </label>
     </div>
 
-    <div class="radio">
-        <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" v-model="r_status">
+
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios2" value="option2" v-model="r_status">
+        <label for="optionsRadios2" class="form-check-label">
             根据溶质的质量分数，质量以及所需的浓度，得到需要加入的水的体积，<span style="color:red;">常用于配制氯金酸母液</span>；
         </label>
     </div>
 
-    <div class="radio">
-        <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" v-model="r_status">
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios3" value="option3" v-model="r_status">
+        <label for="optionsRadios3" class="form-check-label">
             根据密度，百分比浓度（质量），质量分数计算摩尔浓度，<span style="color:red;">可用于浓硝酸、浓硫酸的摩尔浓度计算</span>；
         </label>
     </div>
 
-    <div class="radio">
-        <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4" v-model="r_status">
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios4" value="option4" v-model="r_status">
+        <label for="optionsRadios4" class="form-check-label">
             根据质量百分比、质量分数计算摩尔浓度，<span style="color:red;">用于将质量百分比浓度转换成摩尔浓度</span>。
         </label>
     </div>
@@ -97,62 +117,58 @@
     <div class="form-horizontal">
         <!-- 质量分数 -->
         <div class="form-group">
-            <label for="mws" class="col-sm-1 col-xs-3 form-label">质量分数</label>
-            <div class="col-sm-11 col-xs-9">
-                <!-- https://blog.csdn.net/yunhuaikong/article/details/96868171 -->
-                <!-- https://codepen.io/mbranicky/pen/ymbQNQ -->
-                <v-select label="name" :options="mw_opts" v-model="mws" push-tags taggable :create-option="tag => ({name: tag, value: parseFloat(tag)})">
-                    <span slot="no-options">没有找到相关物质！</span>
-                </v-select>
-            </div>
+            <label for="mws" class="form-label">质量分数</label>
+            <!-- https://blog.csdn.net/yunhuaikong/article/details/96868171 -->
+            <!-- https://codepen.io/mbranicky/pen/ymbQNQ -->
+            <v-select label="name" :options="mw_opts" v-model="mws" push-tags taggable :create-option="tag => ({name: tag, value: parseFloat(tag)})">
+                <span slot="no-options">没有找到相关物质！</span>
+            </v-select>
         </div>
 
         <!-- 溶质质量 -->
         <div class="form-group" v-if="r_status == 'option2'">
-            <label for="quality" class="col-sm-1 col-xs-3 form-label">溶质质量</label>
-            <div class="col-sm-11 col-xs-9">
-                <div class="input-group">
-                    <input type="text" class="form-control" id="quality" v-model="quality">
-                    <div class="input-group-addon">g</div>
+            <label for="quality" class="form-label">溶质质量</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="quality" v-model="quality">
+                <div class="input-group-append">
+                    <span class="input-group-text">g</span>
                 </div>
             </div>
         </div>
 
         <!-- 摩尔浓度 -->
         <div class="form-group" v-if="['option1', 'option2'].includes(r_status)">
-            <label for="concentration" class="col-sm-1 col-xs-3 form-label">浓度</label>
-            <div class="col-sm-11 col-xs-9">
-                <div class="input-group select-group">
-                    <input type="text" class="form-control" id="concentration" v-model="concentration" v-on:keyup.enter="calc">
-                    <select class="select-concentration-unit input-group-addon form-control" v-model="select_concentration_unit">
-                        <option value="1">M</option>
-                        <option value="0.001" selected>mM</option>
-                        <option value="0.000001">μM</option>
-                        <option value="0.000000001">nM</option>
-                    </select>
-                </div>
+            <label for="concentration" class="form-label">浓度</label>
+            <div class="input-group select-group">
+                <input type="text" class="form-control" id="concentration" v-model="concentration" v-on:keyup.enter="calc">
+                <select class="select-concentration-unit input-group-append" v-model="select_concentration_unit" style="width:80px;">
+                    <option value="1">M</option>
+                    <option value="0.001" selected>mM</option>
+                    <option value="0.000001">μM</option>
+                    <option value="0.000000001">nM</option>
+                </select>
             </div>
         </div>
 
         <!-- 密度 -->
         <div class="form-group" v-if="r_status == 'option3'">
-            <label for="density" class="col-sm-1 col-xs-3 form-label">密度</label>
-            <div class="col-sm-11 col-xs-9">
-                <div class="input-group">
-                    <input type="text" id="density" class="form-control" v-model="density">  
-                    <div class="input-group-addon">g/mL</div>                  
-                </div>
+            <label for="density" class="form-label">密度</label>
+            <div class="input-group">
+                <input type="text" id="density" class="form-control" v-model="density">         
+                <div class="input-group-append">
+                    <span class="input-group-text">g/mL</span>
+                </div>         
             </div>
         </div>
 
         <!-- 质量百分比 -->
         <div class="form-group" v-if="['option4', 'option3'].includes(r_status)">
-            <label for="weight_percent" class="col-sm-1 col-xs-3 form-label">质量百分比</label>
-            <div class="col-sm-11 col-xs-9">
-                <div class="input-group">
-                    <input type="text" class="form-control" id="weight_percent" v-model="weight_percent" v-on:keyup.enter="calc">
-                    <div class="input-group-addon">wt %</div>
-                </div>
+            <label for="weight_percent" class="form-label">质量百分比</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="weight_percent" v-model="weight_percent" v-on:keyup.enter="calc">
+                <div class="input-group-append">
+                    <span class="input-group-text">wt %</span>
+                </div>  
             </div>
         </div>
 
@@ -226,14 +242,14 @@
         </table>
     </div>
  </div>
- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js"></script>
- <script src="https://cdn.jsdelivr.net/npm/vue-select@3.10.3/dist/vue-select.min.js"></script>
- <!-- 搜索分子的摩尔重量：https://pubchem.ncbi.nlm.nih.gov/compound/N-Vinyl-2-pyrrolidone -->
+</div>
+
  <script type="text/JavaScript">
     Vue.component('v-select', VueSelect.VueSelect);
     var vm = new Vue({
         el:'#app',
         data: {
+            isNavbarCollapseOpen: false,
             select_concentration_unit:'0.001',
             quality:'',
             r_status: 'option1',
