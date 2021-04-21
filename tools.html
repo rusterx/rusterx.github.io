@@ -12,8 +12,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-select@3.10.3/dist/vue-select.css">
     
     <!-- 用于数据处理 -->
+    <!-- https://www.sitepoint.com/bootstrap-vue-js-bootstrap-vue/ -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js"></script>
     <script src="https://unpkg.com/bootstrap-vue@2.13.0/dist/bootstrap-vue.js"></script>
+    <script src="https://unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-select@3.10.3/dist/vue-select.min.js"></script>
 
     <style>
@@ -48,15 +50,24 @@
         padding-top: 15px;
     }
     </style>
-
-
 </head>
 <body>
 
 
  <div id="app">
+
+    <b-form-group
+    id="fieldset-1"
+    description="Let us know your name."
+    label="Enter your name"
+    label-for="input-1"
+    valid-feedback="Thank you!"
+  >
+    <b-form-input id="input-1" trim></b-form-input>
+  </b-form-group>
+
      <!-- 菜单 -->
-    <b-navbar toggleable="xl" variant="light" type="light">
+    <b-navbar toggleable="lg" variant="light" type="light">
         <b-navbar-brand class="header-name" :to="{name: '#'}">工具集合</b-navbar-brand>
         <b-navbar-toggle class="custom-toggler" target="nav-collapse"></b-navbar-toggle>
         <b-collapse v-model="isNavbarCollapseOpen" id="nav-collapse" is-nav>
@@ -83,7 +94,6 @@
             根据溶质的质量分数和浓度，计算配置一定体积的溶液所需的溶质质量；
         </label>
     </div>
-
 
     <div class="form-check">
         <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios2" value="option2" v-model="r_status">
@@ -135,6 +145,7 @@
                 </div>
             </div>
         </div>
+
 
         <!-- 摩尔浓度 -->
         <div class="form-group" v-if="['option1', 'option2'].includes(r_status)">
@@ -245,7 +256,11 @@
 </div>
 
  <script type="text/JavaScript">
+    //https://bootstrap-vue.org/docs/components
     Vue.component('v-select', VueSelect.VueSelect);
+    // Vue.use(BootstrapVue);
+    // https://bootstrap-vue.org/docs
+
     var vm = new Vue({
         el:'#app',
         data: {
