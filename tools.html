@@ -74,10 +74,10 @@
     <div v-if="isNavbarCollapseOpen" @click="isNavbarCollapseOpen = false" class="navbar-backdrop"></div>
 
     <div class="container-fluid content">
-
-    <blockquote class="blockquote">
-        如需临时计算材料库中未包含的物质，请直接输入该物质的分子质量。
-    </blockquote>
+    
+    <p style='background-color:#fafafa;padding: 5px 5px;border-radius: 3px;'>
+        提示：如需临时计算材料库中未包含的物质，请直接输入该物质的分子质量。
+    </p>
 
     <div class="form-check">
         <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios1" value="option1" v-model="r_status" checked>
