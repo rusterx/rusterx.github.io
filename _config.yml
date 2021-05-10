@@ -73,7 +73,9 @@ theme: jekyll-theme-minimal
 
 # set custom website title
 scope:
-  type: "posts"
-  values:
-  layout: "post"
-  title: ""
+  path: ''
+  type: 'posts'
+
+values:
+  layout: 'post'
+  title: ''
