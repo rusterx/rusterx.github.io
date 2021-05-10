@@ -72,9 +72,8 @@ exclude: ['README.md', 'LICENSE']
 theme: jekyll-theme-minimal
 
 # set custom website title
-# scope:
-#   path: ''
-#   type: 'posts'
-
-# values:
-#   layout: "posts"
+scope:
+  type: "posts"
+  values:
+  layout: "post"
+  title: ""
