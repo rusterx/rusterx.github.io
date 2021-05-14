@@ -1,6 +1,6 @@
 # 正多面体（Platonic solids）
 
-为了方便建模，这里主要集合一些正多面体的尺寸关系，例如外接球半径与边长的关系。参考：<https://en.wikipedia.org/wiki/Regular_polyhedron>
+为了方便建模，这里集合一些正多面体的外接球半径与边长的关系。参考：<https://en.wikipedia.org/wiki/Regular_polyhedron>
 
 ### 正四面体（Tetrahedron）
 
