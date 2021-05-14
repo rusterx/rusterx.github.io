@@ -4,7 +4,7 @@
 
 ### 正四面体（Tetrahedron）
 
-![四面体](https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Tetrahedron.jpg/150px-Tetrahedron.jpg)
+![四面体](https://jekyll-1251110281.file.myqcloud.com/images/150px-Tetrahedron.jpg)
 
 - 外接球半径(radius of circumscribed sphere)与边长的关系
 
@@ -18,7 +18,7 @@ $$
 
 ### 立方体（正六面体，Cube）
 
-![六面体](https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Hexahedron.jpg/150px-Hexahedron.jpg)
+![六面体](https://jekyll-1251110281.file.myqcloud.com/images/150px-Hexahedron.jpg)
 
 - 外接球半径和边长的关系
 
@@ -31,7 +31,7 @@ $$
 
 ### 八面体（Octahedron）
 
-![八面体](https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Octahedron.jpg/150px-Octahedron.jpg)
+![八面体](https://jekyll-1251110281.file.myqcloud.com/images/150px-Octahedron.jpg)
 
 
 - 外接球半径和边长的关系
@@ -45,7 +45,7 @@ $$
 
 ### 十二面体（Dodecahedron）
 
-![十二面体](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Dodecahedron.jpg/150px-Dodecahedron.jpg)
+![十二面体](https://jekyll-1251110281.file.myqcloud.com/images/Dodecahedron.jpg)
 
 - 外接球半径和边长的关系
 
@@ -58,7 +58,9 @@ $$
 
 ### 正二十面体（Icosahedron）
 
-![正二十面体](https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Icosahedron.jpg/150px-Icosahedron.jpg)
+![正二十面体](https://jekyll-1251110281.file.myqcloud.com/images/150px-Icosahedron.jpg)
+
+
 
 - 外接球半径和边长的关系
 
