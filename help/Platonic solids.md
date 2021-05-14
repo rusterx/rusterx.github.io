@@ -9,7 +9,7 @@
 - 外接球半径(radius of circumscribed sphere)与边长的关系
 
 $$
-R = \frac{\sqrt{6}}{4}a = \approx 0.6123 a \iff a \approx 1.6330 R
+R = \frac{\sqrt{6}}{4}a \approx 0.6123 a \iff a \approx 1.6330 R
 $$
 
 **其中$R$代表外接球半径，$a$代表边长，下同。**
