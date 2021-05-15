@@ -27,3 +27,5 @@ repositories {
     maven{ url 'https://maven.aliyun.com/repository/gradle-plugin'}
 }
 ```
+
+参考：<https://www.youtube.com/watch?v=Y8_rQ20C1CI>
