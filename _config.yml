@@ -60,7 +60,7 @@ highlighter: rouge
 markdown: kramdown
 
 # jekyll v3.0
-gems: ['jekyll-paginate']
+# plugins: ['jekyll-paginate']
 
 # jekyll v4.0
 plugins: ['jekyll-paginate']
