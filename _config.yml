@@ -1,6 +1,6 @@
 # Jekyll configuration
 
-# name: Ra
+name: Ra
 description: 昔我往期，杨柳依依
 
 # url is currently only used only for the RSS feed in feed.xml
@@ -75,5 +75,5 @@ theme: jekyll-theme-minimal
 scope:
   type: "posts"
 values:
-layout: "post"
-title: ""
+  layout: "post"
+  title: ""
