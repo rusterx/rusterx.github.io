@@ -75,5 +75,5 @@ theme: jekyll-theme-minimal
 scope:
   type: "posts"
 values:
-  layout: "post"
+layout: "post"
   title: ""
