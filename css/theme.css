@@ -63,6 +63,7 @@ li p {
 
 article p{
     text-align: justify;
+    text-indent: 2em;
     color: #444;
     line-height: 1.8em;
     font-size: 16px;
