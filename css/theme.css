@@ -58,7 +58,7 @@ article{
 article li>p {
     margin: 0px 0px;
     line-height: 1.5em;
-    text-indent: 1em;
+    text-indent: 0em;
 }
 
 
