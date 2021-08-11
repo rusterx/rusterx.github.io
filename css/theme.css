@@ -55,7 +55,7 @@ article{
     margin-bottom: 40px;
 }
 
-li p {
+li>p {
     margin: 0px 0px;
     line-height: 1.2em;
 }
