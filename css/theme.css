@@ -64,6 +64,11 @@ article p{
     font-family: 'kaiti', 'Times New Roman';
 }
 
+li p {
+    margin: 0px 0px;
+    line-height: 1.2em;
+}
+
 article img{
     max-width: 100%;
     display: block;
