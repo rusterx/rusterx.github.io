@@ -55,6 +55,7 @@ article{
     margin-bottom: 40px;
 }
 
+/* 经验：同样是p，如果直接使用li>p，则会被article p的样式覆盖，只有变成article li>p才会不会 */
 article li>p {
     margin: 0px 0px;
     line-height: 1.5em;
