@@ -28,3 +28,5 @@ module.exports = {
 - katex可以通过宏的方式，定义一些字符的快捷方式，参考：<https://katex.org/docs/options.html>。
 - 对于siunitx插件，katex不支持，mathjax支持，但是首先需要下载siunitx的js文件，放置在Tex文件夹中（和mhchem.js相同的文件夹下），然后按照如上的方式配置。
 - 在预览页面，右键Puppeteer->Pdf导出Pdf的方式，默认是没有背景的，如果需要，可以在md文件的导言中设置，也可以直接在用户设置中设置。其他选项包含：<https://github.com/puppeteer/puppeteer/blob/main/docs/api.md#pagepdfoptions>。
+
+对于markdown的写作，强制推荐的一个插件就是`Markdown Image`，可以实现直接粘贴图片到代码编辑器中，然后生成markdown格式的图片引用，插入图片非常方便。
