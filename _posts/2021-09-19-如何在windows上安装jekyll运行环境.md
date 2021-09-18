@@ -23,6 +23,22 @@ gem install jekyll-minimal
 
 类似github等软件平台，提供push等事件的hook。即如果我们将编写的posts提交到github中，github中执行一个hook事件，比如调用一个我们提供的网址。这个时候，我们可以使用powershell编写一个简单的http服务器，当接收到hook的请求，然后脚本就将github中的版本更新到本地，从而达到更新网站的目的。
 
+对于http服务器的创建，可以使用`System.Net.HttpListener`去实现。
+
+```powershell
+$http = New-Object System.Net.HttpListener
+```
+
+由于更新git版本是一个较为耗时的过程，可以使用ps中的`Start-Job`功能，例如：
+
+```powershell
+Start-Job -ScriptBlock{
+    Push-Location -Path "location of your git repo"
+    git pull
+    Pop-Location
+}
+```
+
 # 错误解决
 
 安装完成之后，可能发现标题带有中文的页面无法访问，这个时候可以参考一下网页解决: <https://guosongyu.github.io/2020/01/jekyll%E4%BD%BF%E7%94%A8%E4%B8%AD%E6%96%87%E8%B7%AF%E5%BE%84>，主要是Ruby处理中文字符出现的编码问题。
