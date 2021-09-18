@@ -12,3 +12,13 @@ jekyll搭配markdown写作是一件非常方便的事情，可以直接在本地
 - 安装Ruby语言环境。下载的页面地址：<http://www.ruby-lang.org/zh_cn/downloads/>或者<https://rubyinstaller.org/downloads/>。第一次在rubyinstaller中下载安装最新版的ruby+devkit的版本，但是安装过程会出现问题。因此推荐带devkt的[rubyinstaller-devkit-2.7.4-1-x64.exe](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.7.4-1/rubyinstaller-devkit-2.7.4-1-x64.exe)
 
 - 安装gem，然后安装jekyll、jekyll-paginate以及jekyll-minimal等插件。
+
+```bash
+gem install jekyll
+gem install jekyll-paginate
+gem install jekyll-minimal
+```
+
+# 错误解决
+
+安装完成之后，可能发现标题带有中文的页面无法访问，这个时候可以参考一下网页解决: <https://guosongyu.github.io/2020/01/jekyll%E4%BD%BF%E7%94%A8%E4%B8%AD%E6%96%87%E8%B7%AF%E5%BE%84>，主要是Ruby处理中文字符出现的编码问题。
