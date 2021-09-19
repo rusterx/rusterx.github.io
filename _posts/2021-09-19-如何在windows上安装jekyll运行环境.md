@@ -21,7 +21,7 @@ gem install jekyll-minimal
 
 # 编写应对hook的脚本
 
-类似github等软件平台，提供push等事件的hook。即如果我们将编写的posts提交到github中，github中执行一个hook事件，比如调用一个我们提供的网址。这个时候，我们可以使用powershell编写一个简单的http服务器，当接收到hook的请求，然后脚本就将github中的版本更新到本地，从而达到更新网站的目的。
+类似github等软件平台，提供push等事件的hook。即如果我们将编写的post提交到github中，github将触发一个hook事件，调用一个我们提供的网址。这个时候，我们可以使用powershell编写一个简单的http服务器，当接收到hook的请求，然后脚本就将github中的版本更新到本地，从而达到更新网站的目的。
 
 对于http服务器的创建，可以使用`System.Net.HttpListener`去实现。需要注意github的hook必须是实现了POST请求类型，如果没有，可能导致超时错误。
 
