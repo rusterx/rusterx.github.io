@@ -39,7 +39,6 @@ Start-Job -ScriptBlock{
 }
 ```
 
-测试页面
 
 **注明**：`Start-Job`执行的背景线程，依赖于主线程。如果主线程关闭，背景线程也将会关闭，此与`Start-Process`不同。
 
