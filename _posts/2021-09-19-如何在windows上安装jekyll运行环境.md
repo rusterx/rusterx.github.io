@@ -69,4 +69,4 @@ Start-Process powershell -WindowStyle Hidden -ArgumentList "nginx"
 
 # 错误解决
 
-安装完成之后，可能发现标题带有中文的页面无法访问，这个时候可以参考一下网页解决: <https://guosongyu.github.io/2020/01/jekyll%E4%BD%BF%E7%94%A8%E4%B8%AD%E6%96%87%E8%B7%AF%E5%BE%84>，主要是Ruby处理中文字符出现的编码问题。
+安装完成之后，可能发现标题带有中文的页面无法访问，这个时候可以参考一下网页解决: <https://guosongyu.github.io/2020/01/jekyll%E4%BD%BF%E7%94%A8%E4%B8%AD%E6%96%87%E8%B7%AF%E5%BE%84>，主要是Ruby处理中文字符出现的编码问题，将编码设置为utf-8即可。
