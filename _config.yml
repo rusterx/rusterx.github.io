@@ -11,6 +11,7 @@ url: 'https://rusterx.github.io'
 # *** IMPORTANT: If your local "jekyll serve" throws errors change this to '' or
 #     run it like so: jekyll serve --baseurl=''
 baseurl: ''
+pageurl: '/pages'
 
 # CDN 对应的域名
 cdn:
