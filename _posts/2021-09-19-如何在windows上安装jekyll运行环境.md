@@ -29,7 +29,7 @@ gem install jekyll-minimal
 $http = New-Object System.Net.HttpListener
 ```
 
-由于更新git版本是一个较为耗时的过程，可以使用ps中的`Start-Job`功能，将这个耗时的动作放在背景线程中去执行，使得页面的返回不会太久，例如：
+由于使用git更新repo内容，尤其是提交的东西较多或者网络不好时，是一个较为耗时的过程，容易导致hook调用发生time out错误。此时，可以使用ps中的`Start-Job`功能，将这个耗时的动作放在背景线程中去执行，例如：
 
 ```powershell
 Start-Job -ScriptBlock{
