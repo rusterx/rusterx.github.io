@@ -1,3 +1,8 @@
+修改历史
+============
+
+- 2020.09.19 参考：<https://jekyllrb.com/docs/datafiles/>，创建`_data`文件夹，将数据文件放入其中，则可以直接在html文件中使用文件，而不必重复编写html代码。
+
 Jekyll Clean
 ============
 
