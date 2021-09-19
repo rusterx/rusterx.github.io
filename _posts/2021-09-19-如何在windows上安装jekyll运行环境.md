@@ -23,7 +23,7 @@ gem install jekyll-minimal
 
 类似github等软件平台，提供push等事件的hook。即如果我们将编写的posts提交到github中，github中执行一个hook事件，比如调用一个我们提供的网址。这个时候，我们可以使用powershell编写一个简单的http服务器，当接收到hook的请求，然后脚本就将github中的版本更新到本地，从而达到更新网站的目的。
 
-对于http服务器的创建，可以使用`System.Net.HttpListener`去实现。
+对于http服务器的创建，可以使用`System.Net.HttpListener`去实现。需要注意github的hook必须是实现了POST请求类型，如果没有，可能导致超时错误。
 
 ```powershell
 $http = New-Object System.Net.HttpListener
@@ -37,6 +37,32 @@ Start-Job -ScriptBlock{
     git pull
     Pop-Location
 }
+```
+
+**注明**：`Start-Job`执行的背景线程，依赖于主线程。如果主线程关闭，背景线程也将会关闭，此与`Start-Process`不同。
+
+
+# 后台运行
+
+
+- 运行jekyll
+
+```powershell
+Start-Process powershell -WindowStyle Hidden -ArgumentList "jekyll server"
+```
+
+后台的进程实际有`Ruby`执行。
+
+- 运行HttpListener脚本
+
+```powershell
+Start-Process powershell -WindowStyle Hidden -ArgumentList "powershell_script_filepath"
+```
+
+- 运行nginx（前端服务器）
+
+```powershell
+Start-Process powershell -WindowStyle Hidden -ArgumentList "nginx"
 ```
 
 # 错误解决
