@@ -45,8 +45,6 @@ Start-Job -ScriptBlock{
 # 后台运行
 
 
-测试Convert-FromJson
-
 - 运行jekyll
 
 ```powershell
