@@ -65,6 +65,8 @@ Start-Process powershell -WindowStyle Hidden -ArgumentList "powershell_script_fi
 Start-Process powershell -WindowStyle Hidden -ArgumentList "nginx"
 ```
 
+在nginx的配置文件中，将powershell的HttpLisener和ruby的jekyll脚本设置为后端代理，nginx作为前端处理流量。这样可以实现多个域名对应多个服务器了。
+
 # 错误解决
 
 安装完成之后，可能发现标题带有中文的页面无法访问，这个时候可以参考一下网页解决: <https://guosongyu.github.io/2020/01/jekyll%E4%BD%BF%E7%94%A8%E4%B8%AD%E6%96%87%E8%B7%AF%E5%BE%84>，主要是Ruby处理中文字符出现的编码问题。
