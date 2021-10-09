@@ -65,9 +65,9 @@ article li>p {
 
 article p{
     text-align: justify;
-    text-indent: 2em;
+    /* text-indent: 2em; */
     color: #444;
-    line-height: 1.8em;
+    line-height: 1.5em;
     font-size: 16px;
     margin: 10px 0px;
     font-family: 'kaiti', 'Times New Roman';
