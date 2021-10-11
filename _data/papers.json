@@ -1,6 +1,6 @@
 [
     {
-        "author":"Li, Yun-le and Zhu, Jian and Weng, Guo-jun and Li, Jian-jun and Xing, Ting-yang and Zhao, Jun-wu",
+        "author":"Li, Yun-le and Zhu, Jian and Weng, Guo-jun and Li, Jian-jun and <u>Xing, Ting-yang<\/u> and Zhao, Jun-wu",
         "title":"“Magic Mitt”: Morphologically Controllable AuAg@AuAg Yolk-Shell Nanostars with Better Plasmonic Optical Properties",
         "booktitle":"",
         "journaltitle":"Journal of Alloys and Compounds",
@@ -10,7 +10,17 @@
         "pages":"156134"
     },
     {
-        "author":"Qi, Ying and Xing, Ting-yang and Zhao, Jing and Weng, Guo-jun and Li, Jian-jun and Zhu, Jian and Zhao, Jun-wu",
+        "author":"<u>Xing, Tingyang<\/u> and Ye, Hao and Hu, Xiaoxiao and Wang, Zhihui and Wei, Maomao and He, Liuqing and Wu, Lijun",
+        "title":"The Synthesizing Approach Analysis of Hollow Ag\/Au Nanoparticles in Replacement Reaction between Silver Nanoparticle and Chloroauric Acid",
+        "booktitle":"",
+        "journaltitle":"Applied Surface Science",
+        "date":"2020-05-30",
+        "volume":"513",
+        "number":"",
+        "pages":"145809"
+    },
+    {
+        "author":"Qi, Ying and <u>Xing, Ting-yang<\/u> and Zhao, Jing and Weng, Guo-jun and Li, Jian-jun and Zhu, Jian and Zhao, Jun-wu",
         "title":"Tuning the Surface Enhanced Raman Scattering Performance of Anisotropic Au Core−Ag Shell Hetero-Nanostructure: The Effect of Core Geometry",
         "booktitle":"",
         "journaltitle":"Journal of Alloys and Compounds",
@@ -20,37 +30,7 @@
         "pages":"934-947"
     },
     {
-        "author":"Xie, Yuchan and Wang, Yiran and Xing, Tingyang",
-        "title":"A Project of a Multipath Signal Acquisition and Analysis System Based on Labview",
-        "booktitle":"2014 Seventh International Joint Conference on Computational Sciences and Optimization",
-        "journaltitle":"",
-        "date":"2014-07-01",
-        "volume":"",
-        "number":"",
-        "pages":"544-546"
-    },
-    {
-        "author":"Xing, Ting-Yang and Zhu, Jian and Li, Jian-Jun and Zhao, Jun-Wu",
-        "title":"Morphology Modification of Gold Nanoparticles from Nanoshell to C-Shape: Improved Surface Enhanced Raman Scattering",
-        "booktitle":"",
-        "journaltitle":"Journal of Applied Physics",
-        "date":"2016-06-28",
-        "volume":"119",
-        "number":"24",
-        "pages":"243104"
-    },
-    {
-        "author":"Xing, Ting-Yang and Zhao, Jing and Weng, Guo-Jun and Zhu, Jian and Li, Jian-Jun and Zhao, Jun-Wu",
-        "title":"Specific Detection of Carcinoembryonic Antigen Based on Fluorescence Quenching of Hollow Porous Gold Nanoshells with Roughened Surface",
-        "booktitle":"",
-        "journaltitle":"ACS Applied Materials & Interfaces",
-        "date":"2017-10-25",
-        "volume":"9",
-        "number":"42",
-        "pages":"36632-36641"
-    },
-    {
-        "author":"Xing, Ting-Yang and Zhao, Jing and Weng, Guo-Jun and Li, Jian-Jun and Zhu, Jian and Zhao, Jun-Wu",
+        "author":"<u>Xing, Ting-Yang<\/u> and Zhao, Jing and Weng, Guo-Jun and Li, Jian-Jun and Zhu, Jian and Zhao, Jun-Wu",
         "title":"Synthesis of Dual-Functional Ag\/Au Nanoparticles Based on the Decreased Cavitating Rate under Alkaline Conditions and the Colorimetric Detection of Mercury(II) and Lead(II)",
         "booktitle":"",
         "journaltitle":"Journal of Materials Chemistry C",
@@ -60,13 +40,33 @@
         "pages":"7557-7567"
     },
     {
-        "author":"Xing, Tingyang and Ye, Hao and Hu, Xiaoxiao and Wang, Zhihui and Wei, Maomao and He, Liuqing and Wu, Lijun",
-        "title":"The Synthesizing Approach Analysis of Hollow Ag\/Au Nanoparticles in Replacement Reaction between Silver Nanoparticle and Chloroauric Acid",
+        "author":"<u>Xing, Ting-Yang<\/u> and Zhao, Jing and Weng, Guo-Jun and Zhu, Jian and Li, Jian-Jun and Zhao, Jun-Wu",
+        "title":"Specific Detection of Carcinoembryonic Antigen Based on Fluorescence Quenching of Hollow Porous Gold Nanoshells with Roughened Surface",
         "booktitle":"",
-        "journaltitle":"Applied Surface Science",
-        "date":"2020-05-30",
-        "volume":"513",
+        "journaltitle":"ACS Applied Materials & Interfaces",
+        "date":"2017-10-25",
+        "volume":"9",
+        "number":"42",
+        "pages":"36632-36641"
+    },
+    {
+        "author":"<u>Xing, Ting-Yang<\/u> and Zhu, Jian and Li, Jian-Jun and Zhao, Jun-Wu",
+        "title":"Morphology Modification of Gold Nanoparticles from Nanoshell to C-Shape: Improved Surface Enhanced Raman Scattering",
+        "booktitle":"",
+        "journaltitle":"Journal of Applied Physics",
+        "date":"2016-06-28",
+        "volume":"119",
+        "number":"24",
+        "pages":"243104"
+    },
+    {
+        "author":"Xie, Yuchan and Wang, Yiran and <u>Xing, Tingyang<\/u>",
+        "title":"A Project of a Multipath Signal Acquisition and Analysis System Based on Labview",
+        "booktitle":"2014 Seventh International Joint Conference on Computational Sciences and Optimization",
+        "journaltitle":"",
+        "date":"2014-07-01",
+        "volume":"",
         "number":"",
-        "pages":"145809"
+        "pages":"544-546"
     }
 ]
