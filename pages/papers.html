@@ -11,7 +11,7 @@ layout: single
 
   {% for paper in site.data.papers %}
     <li>
-      {{paper.author}}, {{paper.title}}. {{paper.journaltitle}}, {{paper.year}}. {{paper.volume}}({{paper.issue}}): p{{paper.pages}}
+      {{paper.author}}, {{paper.title}}. {{paper.journaltitle}}, {{paper.year}}. <b>{{paper.volume}}</b>({{paper.number}}): p{{paper.pages}}
     </li>
   {% endfor %}
 </article>
