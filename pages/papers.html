@@ -11,7 +11,7 @@ layout: single
 
   {% for paper in site.data.papers %}
     <li>
-      {{paper.author}}, <i>{{paper.title}}</i>. {{paper.journaltitle}}{{paper.booktitle}}, {{paper.date||date: "%Y"}}. <b>{{paper.volume}}</b>{% if paper.number %}({{paper.number}}){% endif %}: p{{paper.pages}}
+      {{paper.author}}, <i>{{paper.title}}</i>. {{paper.journaltitle}}{{paper.booktitle}}, {{paper.date||date: "%Y"}}. <b>{{paper.volume}}</b>{% if paper.number != "" %}({{paper.number}}){% endif %}: p{{paper.pages}}
     </li>
   {% endfor %}
 </article>
