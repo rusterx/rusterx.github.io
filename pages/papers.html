@@ -9,9 +9,9 @@ layout: single
     <h1>论文</h1>
     <hr/>
 
-    {% for paper in site.data.papers %}
+  {% for paper in site.data.papers %}
     <li>
-      {paper.author}, {paper.title}. {paper.journaltitle}, {paper.year}. {paper.volume}({paper.issue}): p{paper.pages}
+      {{paper.author}}, {{paper.title}}. {{paper.journaltitle}}, {{paper.year}}. {{paper.volume}}({{paper.issue}}): p{{paper.pages}}
     </li>
   {% endfor %}
 </article>
