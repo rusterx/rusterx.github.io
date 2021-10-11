@@ -1,0 +1,17 @@
+---
+layout: single
+---
+
+<!-- This page provides the sidebar links for mobile, where the sidebar is hidden -->
+
+
+<article>
+    <h1>论文</h1>
+    <hr/>
+
+    {% for paper in site.data.papers %}
+    <li>
+      {paper.author}, {paper.title}. {paper.journaltitle}, {paper.year}. {paper.volume}({paper.issue}): p{paper.pages}
+    </li>
+  {% endfor %}
+</article>
