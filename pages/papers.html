@@ -11,7 +11,19 @@ layout: single
 
   {% for paper in site.data.papers %}
     <li style="margin-bottom: 10px;line-height: 1.5em;">
-      {{paper.author}}, <i>{{paper.title}}</i>. {{paper.journaltitle}}{{paper.booktitle}}, {{paper.date||date: "%Y"}}. <b>{{paper.volume}}</b>{% if paper.number != "" %}({{paper.number}}){% endif %}: p{{paper.pages}}
+      {{paper.author}}, 
+      {% if paper.doi =="" %}
+        <i>{{paper.title}}</i>
+      {% else %}
+        <a href="https://doi.org/{{ paper.doi }}" target="_blank"><i>{{paper.title}}</i></a>
+      {% endif %}. 
+      {{paper.journaltitle}}
+      {{paper.booktitle}}, 
+      {{paper.date||date: "%Y"}}. 
+      <b>{{paper.volume}}</b>
+      {% if paper.number != "" %}
+        ({{paper.number}})
+      {% endif %}: p{{paper.pages}}
     </li>
   {% endfor %}
 </article>
