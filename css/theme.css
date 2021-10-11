@@ -63,7 +63,7 @@ article li>p {
 }
 
 iframe{
-    width: 90;
+    display: flex;
     margin: 10px auto;
 }
 
