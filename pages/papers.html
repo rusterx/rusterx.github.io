@@ -20,7 +20,8 @@ layout: single
         {% endif %}. 
         {{paper.journaltitle}}
         {{paper.booktitle}}, 
-        {{paper.date | date: "%Y"}}. 
+        {{ paper.date }}
+        {{ paper.date | date: "%Y"}}. 
         <b>{{paper.volume}}</b>
         {% if paper.number != "" %}
           ({{paper.number}})
