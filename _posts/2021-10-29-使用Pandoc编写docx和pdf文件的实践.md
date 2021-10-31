@@ -185,5 +185,3 @@ tablenos-cleveref: true
 其他的设置参见<https://github.com/tomduck/pandoc-fignos>。
 
 
-
-
