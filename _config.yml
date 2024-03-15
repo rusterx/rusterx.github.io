@@ -4,7 +4,7 @@ name: nino
 description: 昔我往期，杨柳依依
 
 # url is currently only used only for the RSS feed in feed.xml
-url: 'https://nino.iring.fun'
+url: 'http://iring.fun'
 
 # baseurl will often be '', but for a project page on gh-pages, it needs to
 # be the project name.
@@ -22,24 +22,20 @@ cdn:
   katex: 'https://jekyll-1251110281.file.myqcloud.com/katex'
   image: 'https://jekyll-1251110281.file.myqcloud.com/images'
   # 放置一些需要验证Host和Refer的附件
-  attachments: 'https://jekyll-1251110281.file.myqcloud.com/attachments'
   css: 'https://jekyll-1251110281.file.myqcloud.com/css'
   js: 'https://jekyll-1251110281.file.myqcloud.com/js'
   fonts: 'https://jekyll-1251110281.file.myqcloud.com/fonts'
+  attachments: 'https://jekyll-1251W110281.file.myqcloud.com/attachments'
 
 
 # These can be '' to hide the Github or Gitlab nav buttons
 # github: 'rusterx/osier'
 github: ''
-
 gitlab: ''
-
 # gitee: 'https://gitee.com/rusterx'
 gitee: ''
-
 # coding: 'https://nino.coding.net/user'
 coding: ''
-
 # Set this to your UA-# value, or '' to disable the block completely
 gaaccount: ''
 
@@ -56,9 +52,7 @@ disqus: ''
 
 permalink: /:year/:month/:title:output_ext
 # permalink: /:categories/:title
-
 output_ext: ".html"
-
 highlighter: rouge
 markdown: kramdown
 
@@ -69,9 +63,7 @@ markdown: kramdown
 plugins: ['jekyll-paginate']
 
 paginate: 5
-
 exclude: ['README.md', 'LICENSE']
-
 theme: jekyll-theme-minimal
 
 # set custom website title
