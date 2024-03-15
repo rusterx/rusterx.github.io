@@ -5,11 +5,14 @@ date: 2024-03-15
 comments: false
 ---
 
-## 创建一个非`root`用户，专用的`git`用户
+## 创建一个非`root`用户，专用于`git`登录
 
-如果系统自带一个这样的用户，感觉也可以不用创建，直接使用。创建的办法，参考<https://www.liaoxuefeng.com/wiki/896043488029600/899998870925664>。
+如果系统自带一个非`root`用户，感觉也可以直接使用。当然最好创建一下，然后不让这个用户使用交互shell（完成所有的操作之前，不要禁用交互shell，因为下面的大部分创作，都需要在使用该用户权限来操作）。创建的办法，参考<https://www.liaoxuefeng.com/wiki/896043488029600/899998870925664>。
 
-创建完成之后，将本地ssh的公共密钥放置在`~/.ssh/authorized_keys`文件中。
+新创建的用户，可能没有添加sudoers文件中，没有root权限，这样可以参考[git出现xxx is not in the sudoers file This incident will be reported的解决方法](https://blog.csdn.net/u013866352/article/details/105386536)。
+
+
+注意：如果不想使用密码登录或者git不想使用密码，用户创建完成之后，将本地ssh的公共密钥放置在`~/.ssh/authorized_keys`文件中。
 
 
 ## 安装`nginx`
@@ -18,13 +21,11 @@ comments: false
 
 ```sh
 sudo rm /var/www/html/index.nginx-debian.html
-```
-
-```sh
 sudo chown git:www-data /var/www/html
 ```
 
-注意这里的用户`git`应该替换成实际的用户，因为nginx默认的用户很可能是root，这样无法被非root用户使用。
+
+注意：这里的用户`git`应该替换成实际的用户，因为nginx默认的用户很可能是root，这样无法被非root用户使用。
 
 
 ## 安装`jekyll`
