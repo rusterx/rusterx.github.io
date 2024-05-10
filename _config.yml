@@ -29,7 +29,7 @@ cdn:
 
 # These can be '' to hide the Github or Gitlab nav buttons
 # github: 'rusterx/osier'
-github: ""
+github: "rusterx/rusterx.github.io"
 gitlab: ""
 # gitee: 'https://gitee.com/rusterx'
 gitee: ""
