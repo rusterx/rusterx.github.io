@@ -12,6 +12,7 @@ url: "https://iring.fun"
 #     run it like so: jekyll serve --baseurl=''
 baseurl: ""
 pageurl: "/pages"
+downloadurl: "/attachments"
 
 # CDN 对应的域名
 cdn:
