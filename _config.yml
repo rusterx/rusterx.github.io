@@ -32,10 +32,10 @@ cdn:
 # github: 'rusterx/osier'
 github: "rusterx/rusterx.github.io"
 gitlab: ""
-# gitee: 'https://gitee.com/rusterx'
-gitee: ""
-# coding: 'https://nino.coding.net/user'
-coding: ""
+gitee: "rusterx"
+# gitee: ""
+coding: 'https://nino.coding.net/user/projects'
+# coding: ""
 # Set this to your UA-# value, or '' to disable the block completely
 gaaccount: ""
 
