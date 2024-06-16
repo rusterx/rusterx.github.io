@@ -38,7 +38,7 @@ icon: paperclip
         <a href="https://doi.org/{{ paper.DOI }}" target="_blank"><i>{{paper.title}}</i></a>
       {%- endif -%}.&nbsp;
       <!-- title -->
-      {{ paper.container-title}}.&nbsp;
+      {{ paper.container-title-short}}.&nbsp;
       <!-- date -->
       {{ paper.issued.date-parts[0][0] }},&nbsp;
       <!-- volum and issue -->
