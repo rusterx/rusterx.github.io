@@ -11,6 +11,7 @@ icon: paperclip
   <h4>{{py.name}}</h4>
   <ul>
   {%- for paper in py.items -%}
+      <li>
       <!-- print authors -->
       {%- for author in paper.author -%}
         <!-- join author -->
@@ -37,10 +38,12 @@ icon: paperclip
       <!-- date -->
       {{ paper.issued.date-parts[0] | join: '-' }},&nbsp;
       <!-- volum and issue -->
-      {%- if paper.volume -%}
-        {{paper.volume}}({{paper.issue}}),&nbsp;
-      {%- else -%}
-        {{paper.issue}},&nbsp;
+      {%- if paper.volume and paper.volume != "n/a" -%}
+        {%- if paper.issue and paper.issue != "n/a" -%}
+          {{paper.volume}}({{paper.issue}}),&nbsp;
+        {%- else -%}
+          {{paper.volume}},&nbsp;
+        {%- endif -%}
       {%- endif-%}
       <!-- pages -->
       {%- if paper.page -%}
