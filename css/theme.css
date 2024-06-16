@@ -5,11 +5,12 @@ html, body{
     padding:0;
 }
 
-.author::after{
+span.author::after {
     content: '; ';
 }
 
-.author.self{
+
+span.author.self{
     text-decoration: underline;
     font-weight: bold;
 }
