@@ -12,7 +12,15 @@ icon: paperclip
   <h4>{{kp[0]}}</h4>
   {%- for paper in kp[1] -%}
     <li style="margin-bottom: 10px;line-height: 1.5em;">
-      {{paper.author}},
+      {%- set authors = paper.author.split('and') -%}
+      {%- for author in authors -%}
+        {%- if author in ['Xing, Ting-yang'] -%}
+          <u>{{ author|trim }}</u>;&nbsp;
+        {%- else -%}
+          {{ author|trim }}; 
+        {%- endif -%}
+      {%- endfor -%}
+        <!-- {{paper.author}}, -->
       {%- if paper.doi =="" -%}
         <i>{{paper.title}}</i>
       {%- else -%}
