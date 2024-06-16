@@ -5,6 +5,16 @@ html, body{
     padding:0;
 }
 
+.author::after{
+    content: '; ';
+}
+
+.author.self{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+
 body {
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,sans-serif;
     word-break: break-all;
