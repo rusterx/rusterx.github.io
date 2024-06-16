@@ -14,7 +14,7 @@ icon: paperclip
       <!-- print authors -->
       {%- for author in paper.author -%}
         <!-- join author -->
-        {%- assign author_raw = author.given | append ', ' | append.family -%}
+        {%- assign author_raw = author.given | append: ', ' | append: author.family -%}
         {%- if selfs contains author_raw -%}
           <span class="author">{{ author_raw }}</span>
         {%- else -%}
