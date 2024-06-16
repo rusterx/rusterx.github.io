@@ -14,7 +14,7 @@ icon: paperclip
     <li style="margin-bottom: 10px;line-height: 1.5em;">
       {%- assign authors = paper.author | split: " and " -%}
       {%- for author in authors -%}
-        {%- if author in ['Xing, Ting-yang'] -%}
+        {%- if author == "Xing, Ting-yang" -%}
           <u>{{ author|strip }}</u>;&nbsp;
         {%- else -%}
           {{ author|strip }}; 
