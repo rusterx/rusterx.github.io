@@ -5,7 +5,10 @@ icon: paperclip
 ---
 
 <!-- This page provides the sidebar links for mobile, where the sidebar is hidden -->
-
+{%- assign pub_by_year = site.data.publications | group_by_exp: "item", "item.issued.date-parts[0][0]" -%}
+{%- for py in pub_by_year -%}
+  {{py.name}}{{py.items}}
+{%- endfor -%}
 
 <!-- liquid 不能创建array -->
 {%- assign selfs = "Xing, Ting-yang;Xing, Tingyang;Xing, Ting-Yang;Xing, Tingyang" | split: ";" -%}
