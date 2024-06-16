@@ -5,8 +5,11 @@ icon: paperclip
 ---
 
 <!-- This page provides the sidebar links for mobile, where the sidebar is hidden -->
+<!-- after group_by or group_by_exp, item.name indicates the key and item.items indicates the group content -->
 {%- assign pub_by_year = site.data.publications | group_by_exp: "item", "item.issued.date-parts[0][0]" | sort: "name" | reverse -%}
 {%- assign selfs = "Tingyang, Xing" | split: ";" -%}
+
+<!-- print bibliography -->
 {%- for py in pub_by_year -%}
   <h4>{{py.name}}</h4>
   <ul>
