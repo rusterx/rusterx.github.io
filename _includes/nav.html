@@ -22,20 +22,20 @@
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Code
                       </a>
-                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         {% if site.gitlab != '' %}
-                          <li><a class="dropdown-item" target="_blank" href="https://gitlab.com/{{ site.gitlab }}">Gitlab</a></li>
+                          <a class="dropdown-item" target="_blank" href="https://gitlab.com/{{ site.gitlab }}">Gitlab</a>
                         {% endif %}
                         {% if site.github != '' %}
-                          <li><a class="dropdown-item" target="_blank" href="https://github.com/{{ site.github }}">Github</a></li>
+                          <a class="dropdown-item" target="_blank" href="https://github.com/{{ site.github }}">Github</a>
                         {% endif %}
                         {% if site.gitee != '' %}
-                          <li><a class="dropdown-item" target="_blank" href="https://gitee.com/{{ site.gitee }}">码云</a></li>
+                          <a class="dropdown-item" target="_blank" href="https://gitee.com/{{ site.gitee }}">码云</a>
                         {% endif %}
                         {% if site.coding != '' %}
-                          <li><a class="dropdown-item" target="_blank" href="{{ site.coding }}">Coding</a></li>
+                          <a class="dropdown-item" target="_blank" href="{{ site.coding }}">Coding</a>
                         {% endif %}
-                      </ul>
+                      </div>
                     </li>
                     <li class="active"><a href="{{ site.pageurl }}/about.html">关于</a></li>
                     <li class="active"><a href="{{ site.baseurl }}/feed.xml">RSS</a></li>
