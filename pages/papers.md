@@ -7,14 +7,14 @@ icon: paperclip
 <!-- This page provides the sidebar links for mobile, where the sidebar is hidden -->
 
 
-
+{%- assign selfs = ["Xing, Ting-yang", "Xing, Tingyang", "Xing, Ting-Yang", "Xing, Tingyang"] -%}
 {%- for kp in site.data.papers -%}
   <h4>{{kp[0]}}</h4>
   {%- for paper in kp[1] -%}
     <li style="margin-bottom: 10px;line-height: 1.5em;">
       {%- assign authors = paper.author | split: " and " -%}
       {%- for author in authors -%}
-        {%- if "Xing, Ting-yang" == author -%}
+        {%- if selfs contins author -%}
           <span class="author">{{ author }}</span>;&nbsp;
         {%- else -%}
           <span class="others">{{ author }}</span>;&nbsp;
