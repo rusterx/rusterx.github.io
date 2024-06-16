@@ -5,12 +5,7 @@ html, body{
     padding:0;
 }
 
-span.author::after {
-    content: '; ';
-}
-
-
-span.author.self{
+span.author{
     text-decoration: underline;
     font-weight: bold;
 }

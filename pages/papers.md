@@ -15,9 +15,9 @@ icon: paperclip
       {%- assign authors = paper.author | split: " and " -%}
       {%- for author in authors -%}
         {%- if "Xing, Ting-yang" == author -%}
-          <span class="author self">{{ author|strip }}</span>
+          <span class="author">{{ author }}</span>;&nbsp;
         {%- else -%}
-          <span class="author">{{ author|strip}}</span>
+          <span class="others">{{ author }}</span>;&nbsp;
         {%- endif -%}
       {%- endfor -%}
         <!-- {{paper.author}}, -->
