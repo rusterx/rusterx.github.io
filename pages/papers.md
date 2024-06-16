@@ -5,9 +5,9 @@ icon: paperclip
 ---
 
 <!-- This page provides the sidebar links for mobile, where the sidebar is hidden -->
-{%- assign pub_by_year = site.data.publications | group_by_exp: "item", "item.issued.date-parts[0][0]" | reverse -%}
+{%- assign pub_by_year = site.data.publications | group_by_exp: "item", "item.issued.date-parts[0][0] | to_i" | reverse -%}
 {%- for py in pub_by_year -%}
-  {{py.name}}
+  {{py.name}}<br/>
 {%- endfor -%}
 
 <!-- liquid 不能创建array -->
