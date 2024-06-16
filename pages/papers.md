@@ -7,7 +7,8 @@ icon: paperclip
 <!-- This page provides the sidebar links for mobile, where the sidebar is hidden -->
 
 
-{%- assign selfs = ["Xing, Ting-yang", "Xing, Tingyang", "Xing, Ting-Yang", "Xing, Tingyang"] -%}
+<!-- liquid 不能创建array -->
+{%- assign selfs = "Xing, Ting-yang;Xing, Tingyang;Xing, Ting-Yang;Xing, Tingyang" | split: ";" -%}
 {%- for kp in site.data.papers -%}
   <h4>{{kp[0]}}</h4>
   {%- for paper in kp[1] -%}
