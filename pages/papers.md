@@ -7,23 +7,24 @@ icon: paperclip
 <!-- This page provides the sidebar links for mobile, where the sidebar is hidden -->
 
 
-{% for kp in site.data.papers %}
+
+{%- for kp in site.data.papers -%}
   <h4>{{kp[0]}}</h4>
-  {% for paper in kp[1] %}
+  {%- for paper in kp[1] -%}
     <li style="margin-bottom: 10px;line-height: 1.5em;">
-      {{paper.author}}, 
-      {% if paper.doi =="" %}
+      {{paper.author}},
+      {%- if paper.doi =="" -%}
         <i>{{paper.title}}</i>
-      {% else %}
+      {%- else -%}
         <a href="https://doi.org/{{ paper.doi }}" target="_blank"><i>{{paper.title}}</i></a>
-      {% endif %}. 
+      {%- endif -%}. 
       {{paper.journaltitle}}
       {{paper.booktitle}}, 
       {{ paper.date }}.
       <b>{{paper.volume}}</b>
-      {% if paper.number != "" %}
+      {%- if paper.number != "" -%}
         ({{paper.number}})
-      {% endif %}: p{{paper.pages}}
+      {%- endif -%}: p{{paper.pages}}
     </li>
-  {% endfor %}
-{% endfor %}
+  {%- endfor -%}
+{%- endfor -%}
