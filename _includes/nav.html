@@ -18,24 +18,24 @@
                     <li class="active"><a href="{{ site.pageurl }}/papers.html">论文</a></li>
                     <li class="active"><a href="{{ site.baseurl }}/gallery/">图集</a></li>
                     <li class="active"><a href="{{ site.pageurl }}/tools.html" target="_blank">工具</a></li>
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="codeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Code
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Code <span class="caret"></span>
                       </a>
-                      <div class="dropdown-menu" aria-labelledby="codeDropdown">
+                      <ul class="dropdown-menu" role="menu">
                         {% if site.gitlab != '' %}
-                          <a class="dropdown-item" target="_blank" href="https://gitlab.com/{{ site.gitlab }}">Gitlab</a>
+                          <li><a class="dropdown-item" target="_blank" href="https://gitlab.com/{{ site.gitlab }}">Gitlab</a></li>
                         {% endif %}
                         {% if site.github != '' %}
-                          <a class="dropdown-item" target="_blank" href="https://github.com/{{ site.github }}">Github</a>
+                          <li><a class="dropdown-item" target="_blank" href="https://github.com/{{ site.github }}">Github</a></li>
                         {% endif %}
                         {% if site.gitee != '' %}
-                          <a class="dropdown-item" target="_blank" href="https://gitee.com/{{ site.gitee }}">码云</a>
+                          <li><a class="dropdown-item" target="_blank" href="https://gitee.com/{{ site.gitee }}">码云</a></li>
                         {% endif %}
                         {% if site.coding != '' %}
-                          <a class="dropdown-item" target="_blank" href="{{ site.coding }}">Coding</a>
+                          <li><a class="dropdown-item" target="_blank" href="{{ site.coding }}">Coding</a></li>
                         {% endif %}
-                      </div>
+                      </ul>
                     </li>
                     <li class="active"><a href="{{ site.pageurl }}/about.html">关于</a></li>
                     <li class="active"><a href="{{ site.baseurl }}/feed.xml">RSS</a></li>
