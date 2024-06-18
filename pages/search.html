@@ -6,7 +6,14 @@ icon: search
 
 <!-- 引入搜索 -->
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-<script defer>
+
+
+<div id="app">
+  <input type="text" class="form-control" @keyup.enter="search" v-model="qw" placeholder="搜索" >
+</div>
+
+
+<script>
   const { createApp, ref } = Vue
   createApp({
     setup() {
@@ -22,8 +29,3 @@ icon: search
     }
   }).mount('#app')
 </script>
-
-
-<div id="app">
-  <input type="text" class="form-control" placeholder="搜索" >
-</div>
