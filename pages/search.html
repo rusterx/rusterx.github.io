@@ -11,7 +11,6 @@ icon: search
 <div id="app">
   <input type="text" class="form-control" @keyup.enter="search" v-model="qw" placeholder="搜索" >
   <div v-if="results.length != 0">
-    <h2>搜索结果</h2>
     <br/>
     <div class="result-item" v-for="(result, index) in results" :key="index">
       <a :href="result.url" class="result-title"><h4>${ result.name }$</h4></a>
