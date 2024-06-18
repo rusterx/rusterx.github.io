@@ -6,7 +6,7 @@ icon: search
 
 <!-- 引入搜索 -->
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-<script>
+<script defer>
   const { createApp, ref } = Vue
   createApp({
     setup() {
