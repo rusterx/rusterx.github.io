@@ -30,14 +30,17 @@ icon: search
       const results = ref([]);
 
       function search(){
-        var url = 'https://service-o1wnvkkp-1251110281.sh.tencentapigw.com/release/search/'+encodeURI(qw.value);
+        var url = 'https://1251110281-6dc4hyvsn0-sh.scf.tencentcs.com/search/'+encodeURI(qw.value);
         var options = {
           mode: 'no-cors',
           header: {
             'Access-Control-Allow-Origin':'*',
           }
         };
-        fetch(url, options).then(res => res.json()).then(json => {
+        fetch(url, options).then(res => {
+          console.log(res);
+          return res.json();
+        }).then(json => {
           console.log(json);
           results.value = json['webPages']['value'];
         }).catch(err => {
