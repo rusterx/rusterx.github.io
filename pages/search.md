@@ -23,6 +23,7 @@ icon: search
   }).mount('#app')
 </script>
 
+
 <div id="app">
-    <input type="text" class="form-control" v-model="qw" @keyup.enter="search" placeholder="搜索" />
+  <input type="text" class="form-control" placeholder="搜索" >
 </div>
