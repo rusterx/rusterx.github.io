@@ -14,9 +14,9 @@ icon: search
     <h2>搜索结果</h2>
     <br/>
     <div class="result-item" v-for="(result, index) in results" :key="index">
-      <a :href="result.url" class="result-title">{{ result.name }}</a>
-      <h4>{{ result.url }}</h4>
-      <p>{{ result.snippet }}</p>
+      <a :href="result.url" class="result-title">${ result.name }$</a>
+      <h4>${ result.url }$</h4>
+      <p>${ result.snippet }$</p>
     </div>
   </div>
 </div>
@@ -25,6 +25,7 @@ icon: search
 <script>
   const { createApp, ref } = Vue
   createApp({
+    delimiters: ["${", "}$"],
     setup() {
       const qw = ref('');
       const results = ref([]);
