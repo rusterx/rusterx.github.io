@@ -23,8 +23,10 @@ icon: search
         console.log(`The query research is : ${qw}`);
       }
 
+      // 使用setup创建的必须全局返回
       return {
-        qw
+        qw,
+        search
       }
     }
   }).mount('#app')
