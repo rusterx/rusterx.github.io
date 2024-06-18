@@ -33,9 +33,10 @@ icon: search
         results.value = [];
         var url = 'https://1251110281-6dc4hyvsn0-sh.scf.tencentcs.com/search/'+encodeURI(qw.value);
         axios.get(url).then(function (res) {
-          console.log(res);
-          const data = res.data['webPages']['value'];
-          results.value = data;
+          const data = res.data;
+          if(data.hasOwnProperty('webPages')){
+            results.value = data['webPages']['value'];
+          }
         })
       }
 
