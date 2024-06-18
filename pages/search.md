@@ -8,7 +8,7 @@ icon: search
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 <div id="app">
-    <input type="text" class="form-control" v-model="qw" @keyup.enter="search" placeholder='搜索'>
+    <input type="text" class="form-control" v-model="qw" @keyup.enter="search" placeholder="搜索" />
 </div>
 
 <script>
