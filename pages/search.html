@@ -31,7 +31,13 @@ icon: search
 
       function search(){
         var url = 'https://service-o1wnvkkp-1251110281.sh.tencentapigw.com/release/search/'+encodeURI(qw.value);
-        fetch(url).then(res => res.json()).then(json => {
+        var options = {
+          mode: 'no-cors',
+          header: {
+            'Access-Control-Allow-Origin':'*',
+          }
+        };
+        fetch(url, options).then(res => res.json()).then(json => {
           console.log(json);
           results.value = json['webPages']['value'];
         }).catch(err => {
