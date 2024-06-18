@@ -6,7 +6,7 @@ icon: search
 
 <!-- 引入搜索 -->
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
+<script src="'https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js'"></script>
 
 <div id="app">
   <input type="text" class="form-control" @keyup.enter="search" v-model="qw" placeholder="搜索" >
@@ -28,24 +28,13 @@ icon: search
     setup() {
       const qw = ref('');
       const results = ref([]);
-
       function search(){
         var url = 'https://1251110281-6dc4hyvsn0-sh.scf.tencentcs.com/search/'+encodeURI(qw.value);
-        var options = {
-          mode: 'no-cors',
-          header: {
-            'Access-Control-Allow-Origin':'*',
-          }
-        };
-        fetch(url, options).then(res => {
+        axios.get(url).then(function (res) {
           console.log(res);
-          return res.json();
-        }).then(json => {
-          console.log(json);
-          results.value = json['webPages']['value'];
-        }).catch(err => {
-          console.log(err);
-        });
+          const data = res.data['webPages']['value'];
+          results.value = data;
+        })
       }
 
       // 使用setup创建的必须全局返回
