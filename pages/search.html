@@ -29,6 +29,8 @@ icon: search
       const qw = ref('');
       const results = ref([]);
       function search(){
+        //clear results
+        results.value = [];
         var url = 'https://1251110281-6dc4hyvsn0-sh.scf.tencentcs.com/search/'+encodeURI(qw.value);
         axios.get(url).then(function (res) {
           console.log(res);
