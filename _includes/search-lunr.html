@@ -19,7 +19,9 @@ const idx = new FlexSearch.Document({
     }
 });
 
-idx.add(documents);
+for(var i = 0; i< documents.length; i++){
+    idx.add(documents[i]);
+}
 
 function serach_post(term) {
     document.getElementById('lunrsearchresults').innerHTML = '<ul></ul>';
