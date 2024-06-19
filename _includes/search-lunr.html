@@ -13,17 +13,17 @@ var idx = lunr(function () {
     this.ref('id')
     this.field('title')
     this.field('body')
-
-    documents.forEach(function (doc) {
-        this.add(doc)
-    }, this)
 });
+
+const docs = documents.map(doc => idx.add(doc));
+const lunrCn = lunr.init(idx, docs)
+
 function lunr_search(term) {
     document.getElementById('lunrsearchresults').innerHTML = '<ul></ul>';
     if(term) {
         document.getElementById('lunrsearchresults').innerHTML = "<p>搜索词： '" + term + "'</p>" + document.getElementById('lunrsearchresults').innerHTML;
         //put results on the screen.
-        var results = idx.search(term);
+        var results = lunrCn.search(term);
         if(results.length>0){
             for (var i = 0; i < results.length; i++) {
                 // more statements
