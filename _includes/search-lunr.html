@@ -13,10 +13,12 @@ var documents = [{% for page in site.posts %}{
 
 
 const idx = new FlexSearch.Document({
+    cache: 100,
     document: {
         id: "id",
         index: ["title", "body"]
-    }
+    },
+    encode: str => str.split("")
 });
 
 for(var i = 0; i< documents.length; i++){
