@@ -7,6 +7,7 @@ icon: search
 <!-- 引入搜索 -->
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/flexsearch.bundle.js"></script>
 
 <div id="app">
   <input type="text" class="form-control" @keyup.enter="search" v-model="qw" placeholder="搜索" >
@@ -20,25 +21,49 @@ icon: search
   </div>
 </div>
 
-{% include search-lunr.html %}
-
 <script>
   const { createApp, ref } = Vue
+  {% assign counter = 0 %}
+  var documents = [{% for page in site.posts %}{
+      "id": {{ counter }},
+      "url": "{{ site.url }}{{ page.url }}",
+      "title": "{{ page.title }}",
+      "body": "{{ page.date | date: "%Y/%m/%d" }} - {{ page.content | markdownify | replace: '.', '. ' | replace: '\', '' | replace: '</h2>', ': ' | replace: '</h3>', ': ' | replace: '</h4>', ': ' | replace: '</p>', ' ' | strip_html | strip_newlines | replace: '  ', ' ' | replace: '"', ' ' }}"{% assign counter = counter | plus: 1 %}
+      }{% if forloop.last %}{% else %}, {% endif %}{% endfor %}];
+  const idx = new FlexSearch.Document({
+      cache: 100,
+      document: {
+          id: "id",
+          index: ["title", "body"]
+      },
+      encode: str => str.split("")
+  });
+  
+  for(var i = 0; i< documents.length; i++){
+      idx.add(documents[i]);
+  }
+  
   createApp({
     delimiters: ["${", "}$"],
     setup() {
       const qw = ref('');
       const results = ref([]);
       function search(){
-        //clear results
         results.value = [];
-        var url = 'https://1251110281-6dc4hyvsn0-sh.scf.tencentcs.com/search/'+encodeURI(qw.value);
-        axios.get(url).then(function (res) {
-          const data = res.data;
-          if(data.hasOwnProperty('webPages')){
-            results.value = data['webPages']['value'];
-          }
-        })
+        let indexs = [];
+        const data = idx.search(qw);
+        for(var i = 0; i < data.length; i++){
+          indexs.push(...data['result'])
+        }
+        const uniqueIndexs = indexs.filter(onlyUnique);
+        console.log(uniqueIndexs);
+        for(var i=0; i < uniqueIndexs.length; i++){
+          results.value.push(documents[uniqueIndexs[i]]);
+        }
+      }
+
+      function onlyUnique(value, index, array) {
+        return array.indexOf(value) === index;
       }
 
       // 使用setup创建的必须全局返回
