@@ -10,6 +10,10 @@ span.author{
     font-weight: bold;
 }
 
+.journal{
+    color: red;
+}
+
 
 body {
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,sans-serif;

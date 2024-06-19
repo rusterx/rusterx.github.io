@@ -27,7 +27,7 @@ icon: user
 
 - 2024年6月
   
-  突然发现不仅仅是`_post`目录里的东西，只要是`markdown`文件，不论在哪个目录，都会被渲染成`html`格式。这样如果设置好一个`layout`文件，就可以非常方便的使用markdown来编写html网页，并且仍然支持jekyll的一些语法。
+  突然发现不仅仅是`_post`目录里的东西，只要是`markdown`文件，不论在哪个目录，都会被渲染成`html`格式。这样如果设置好一个`layout`文件，就可以非常方便的使用markdown来编写html网页，并且仍然支持jekyll的一些语法。根据liquid语法，解析csl json格式的论文数据，自动按年份渲染成论文列表。基于flexsearch.js，实现全文检索。
 
 - 2024年3月
   

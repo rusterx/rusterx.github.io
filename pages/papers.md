@@ -35,10 +35,10 @@ icon: paperclip
       {%- if paper.DOI =="" -%}
         <i>{{paper.title}}</i>
       {%- else -%}
-        <a href="https://doi.org/{{ paper.DOI }}" target="_blank"><i>{{paper.title}}</i></a>
+        <a href="https://doi.org/{{ paper.DOI }}"><i>{{paper.title}}</i></a>
       {%- endif -%}.&nbsp;
       <!-- title -->
-      <a href="https://www.ablesci.com/journal/index?keywords={{paper.container-title}}">{{paper.container-title}}</a>.&nbsp;
+      <a class="journal" href="https://www.ablesci.com/journal/index?keywords={{paper.container-title}}">{{paper.container-title}}</a>.&nbsp;
       <!-- date -->
       {{ paper.issued.date-parts[0][0] }},&nbsp;
       <!-- volum and issue -->
