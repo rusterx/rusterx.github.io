@@ -10,7 +10,7 @@ icon: search
 <script src="/js/flexsearch.bundle.js"></script>
 
 <div id="app">
-  <input type="text" class="form-control" @keyup.enter="search" v-model="qw" placeholder="搜索" >
+  <input type="text" class="form-control" @keyup.enter="search" v-model="queryWords" placeholder="搜索" >
   <div v-if="results.length != 0">
     <br/>
     <div class="result-item" v-for="result in results" :key="result.id">
@@ -44,23 +44,23 @@ icon: search
           id: "id",
           index: ["title", "body"]
       },
-      encode: str => str.split("")
+      tokenize: 'full', 
+      resolution: 5,
+      encode: str => str.trim().toLowerCase().split(/[\p{Z}\p{S}\p{P}\p{C}]+/u)
   });
   
-  for(var i = 0; i< documents.length; i++){
-      idx.add(documents[i]);
-  }
+  documents.forEach( doc => idx.add(doc));
   
   createApp({
     delimiters: ["${", "}$"],
     setup() {
-      const qw = ref('');
+      const queryWords = ref('');
       const results = ref([]);
 
       function search(){
         results.value = [];
         let indexs = [];
-        const data = idx.search(qw.value);
+        const data = idx.search(queryWords.value);
         for(var i = 0; i < data.length; i++){
           indexs.push(...data[i]['result'])
         }
@@ -86,7 +86,7 @@ icon: search
 
       // 使用setup创建的必须全局返回
       return {
-        qw,
+        queryWords,
         results,
         search,
         getSummary
