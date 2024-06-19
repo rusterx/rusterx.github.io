@@ -48,19 +48,16 @@ icon: search
     setup() {
       const qw = ref('');
       const results = ref([]);
+
       function search(){
         results.value = [];
         let indexs = [];
-        const data = idx.search(qw);
-        console.log(data);
+        const data = idx.search(qw.value);
         for(var i = 0; i < data.length; i++){
-          indexs.push(...data['result'])
+          indexs.push(...data[i]['result'])
         }
         const uniqueIndexs = indexs.filter(onlyUnique);
-        console.log(uniqueIndexs);
-        for(var i=0; i < uniqueIndexs.length; i++){
-          results.value.push(documents[uniqueIndexs[i]]);
-        }
+        uniqueIndexs.forEach( v => results.value.push(documents[v]));
       }
 
       function onlyUnique(value, index, array) {
