@@ -1,6 +1,6 @@
 <!-- <script src="/js/lunr-chinese.js"></script> -->
 
-<script src="https://raw.githubusercontent.com/nextapps-de/flexsearch/master/dist/flexsearch.bundle.min.js"></script>
+<script src="/js/flexsearch.bundle.js"></script>
 
 <script>
 {% assign counter = 0 %}
@@ -12,17 +12,16 @@ var documents = [{% for page in site.posts %}{
     }{% if forloop.last %}{% else %}, {% endif %}{% endfor %}];
 
 
-const idx = new FlexSearch.Document({
+const idx = new Document({
     document: {
         id: "id",
         index: ["title", "body"]
     }
 });
 
-documents.forEach(doc => idx.add(doc));
+idx.add(docs);
 
-
-function lunr_search(term) {
+function serach_post(term) {
     document.getElementById('lunrsearchresults').innerHTML = '<ul></ul>';
     if(term) {
         document.getElementById('lunrsearchresults').innerHTML = "<p>搜索词： '" + term + "'</p>" + document.getElementById('lunrsearchresults').innerHTML;
@@ -56,7 +55,7 @@ function lunr_search(term) {
 </style>
 
 
-<form onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+<form onSubmit="return serach_post(document.getElementById('lunrsearch').value);">
     <p><input type="text" class="form-control" id="lunrsearch" name="q" maxlength="255" value="" placeholder="请输入检索词" /></p>
 </form>
 <div id="lunrsearchresults">
