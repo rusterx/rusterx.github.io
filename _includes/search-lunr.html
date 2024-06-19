@@ -12,7 +12,7 @@ var documents = [{% for page in site.posts %}{
     }{% if forloop.last %}{% else %}, {% endif %}{% endfor %}];
 
 
-const idx = new Document({
+const idx = new FlexSearch.Document({
     document: {
         id: "id",
         index: ["title", "body"]
