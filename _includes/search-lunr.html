@@ -4,7 +4,7 @@
 
 <script>
 {% assign counter = 0 %}
-var documents = [{% for page in site.posts %}{
+var docs = [{% for page in site.posts %}{
     "id": {{ counter }},
     "url": "{{ site.url }}{{ page.url }}",
     "title": "{{ page.title }}",
