@@ -13,10 +13,10 @@ icon: search
   <input type="text" class="form-control" @keyup.enter="search" v-model="qw" placeholder="搜索" >
   <div v-if="results.length != 0">
     <br/>
-    <div class="result-item" v-for="(result, index) in results" :key="index">
-      <a :href="result.url" class="result-title"><h4>${ result.name }$</h4></a>
+    <div class="result-item" v-for="result in results" :key="result.id">
+      <a :href="result.url" class="result-title"><h4>${ result.title }$</h4></a>
       <div>${ result.url }$</div>
-      <p>${ result.snippet }$</p>
+      <p>${ result.body }$</p>
     </div>
   </div>
 </div>
@@ -52,6 +52,7 @@ icon: search
         results.value = [];
         let indexs = [];
         const data = idx.search(qw);
+        console.log(data);
         for(var i = 0; i < data.length; i++){
           indexs.push(...data['result'])
         }
