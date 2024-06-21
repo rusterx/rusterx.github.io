@@ -56,7 +56,7 @@ icon: search
     setup() {
       const queryWords = ref('');
       const results = ref([]);
-      import {posts} from '/js/data.js'
+      import {posts} from require('/js/data.js');
       console.log(posts);
 
       function search(){
