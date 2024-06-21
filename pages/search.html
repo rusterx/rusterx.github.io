@@ -37,9 +37,6 @@ icon: search
       {%- endif -%}
   {%- endfor -%}];
 
-  import {posts} from '/js/data.js'
-  console.log(posts);
-
   // create index
   const idx = new FlexSearch.Document({
       cache: 100,
@@ -59,6 +56,8 @@ icon: search
     setup() {
       const queryWords = ref('');
       const results = ref([]);
+      import {posts} from '/js/data.js'
+      console.log(posts);
 
       function search(){
         results.value = [];
