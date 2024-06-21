@@ -31,9 +31,9 @@ icon: search
         "url": "{{ site.url }}{{ page.url }}",
         "title": "{{ page.title }}",
         "body": "{{ page.date | date: '%Y/%m/%d' }} - {{ page.content | markdownify | strip_html | replace: '\', '\\' }}"
-        {% assign counter = counter | plus: 1 %}
+        {%- assign counter = counter | plus: 1 -%}
       }
-      {% unless forloop.last %},{% endunless %}
+      {%- unless forloop.last -%},{%- endunless -%}
   {%- endfor -%}];
 
   // create index
