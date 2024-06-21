@@ -1,5 +1,6 @@
 ---
 ---
+{% assign counter = 0 %}
 var posts = [
     {%- for page in site.posts -%}
         {
