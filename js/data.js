@@ -1,3 +1,5 @@
+---
+---
 var posts = [
     {%- for page in site.posts -%}
         {
