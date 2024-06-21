@@ -6,6 +6,7 @@ icon: search
 
 <!-- 引入搜索 -->
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="/js/flexsearch.bundle.js"></script>
 
 <div id="app">
@@ -39,6 +40,7 @@ icon: search
   posts.forEach(post => idx.add(post));
 
   createApp({
+    delimiters: ["${", "}$"],
     setup() {
       const queryWord = ref('');
       const results = ref([]);
@@ -49,7 +51,7 @@ icon: search
         const indexs = [].concat(...queryResults.map(qr => qr['result'])).filter(uniqueData);
         indexs.forEach(index => results.value.push(posts[index]));
       }
-
+      
 
       function uniqueData(value, index, array) {
         return array.indexOf(value) === index;
@@ -57,9 +59,7 @@ icon: search
 
       function getSummary(str, n) {
         var r = /[^\x00-\xff]/g;
-        if (str.replace(r, "mm").length <= n) {
-           return str; 
-        }
+        if (str.replace(r, "mm").length <= n) { return str; }
         var m = Math.floor(n / 2);
         for (var i = m; i < str.length; i++) {
           if (str.substr(0, i).replace(r, "mm").length >= n) {
