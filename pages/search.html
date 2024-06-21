@@ -37,6 +37,9 @@ icon: search
       {%- endif -%}
   {%- endfor -%}];
 
+  import {posts} from '/js/data.js'
+  console.log(posts);
+
   // create index
   const idx = new FlexSearch.Document({
       cache: 100,
