@@ -14,9 +14,9 @@ icon: search
   <div v-if="results.length != 0">
     <br/>
     <div class="result-item" v-for="result in results" :key="result.id">
-      <a :href="result.url" class="result-title"><h4>{{result.title}}</h4></a>
-      <div>{{result.url}}</div>
-      <p>{{ getSummary(result.body, 160) }}</p>
+      <a :href="result.url" class="result-title"><h4>${result.title}$</h4></a>
+      <div>${result.url}$</div>
+      <p>${ getSummary(result.body, 160) }$</p>
     </div>
   </div>
 </div>
