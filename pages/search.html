@@ -10,32 +10,20 @@ icon: search
 <script src="/js/flexsearch.bundle.js"></script>
 
 <div id="app">
-  <input type="text" class="form-control" @keyup.enter="search" v-model="queryWords" placeholder="搜索" >
+  <input type="text" class="form-control" @keyup.enter="search" v-model="queryWord" placeholder="搜索" >
   <div v-if="results.length != 0">
     <br/>
     <div class="result-item" v-for="result in results" :key="result.id">
-      <a :href="result.url" class="result-title"><h4>${ result.title }$</h4></a>
-      <div>${ result.url }$</div>
-      <p>${ getSummary(result.body, 160) }$</p>
+      <a :href="result.url" class="result-title"><h4>{{result.title}}</h4></a>
+      <div>{{result.url}}</div>
+      <p>{{ getSummary(result.body, 160) }}</p>
     </div>
   </div>
 </div>
 
 <script type="module">
   const { createApp, ref } = Vue
-  {% assign counter = 0 %}
-  var documents = [
-  {%- for page in site.posts -%}
-      {
-        "id": {{ counter }},
-        "url": "{{ site.url }}{{ page.url }}",
-        "title": "{{ page.title }}",
-        "body": "{{ page.date | date: "%Y/%m/%d" }} - {{ page.content | markdownify | replace: '.', '. ' | replace: '\', '' | replace: '</h2>', ': ' | replace: '</h3>', ': ' | replace: '</h4>', ': ' | replace: '</p>', ' ' | strip_html | strip_newlines | replace: '  ', ' ' | replace: '"', ' ' }}"{% assign counter = counter | plus: 1 %}
-      }
-      {%- if forloop.last -%}
-      {%- else -%}, 
-      {%- endif -%}
-  {%- endfor -%}];
+  import { posts } from '/js/data.js';
 
   // create index
   const idx = new FlexSearch.Document({
@@ -49,47 +37,41 @@ icon: search
       encode: str => str.trim().toLowerCase().split(/[\p{Z}\p{S}\p{P}\p{C}]+/u)
   });
   
-  documents.forEach( doc => idx.add(doc));
+  posts.forEach(post => idx.add(post));
 
-  import { posts } from '/js/data.js';
-  console.log(posts);
-  
   createApp({
-    delimiters: ["${", "}$"],
     setup() {
-      const queryWords = ref('');
+      const queryWord = ref('');
       const results = ref([]);
 
       function search(){
         results.value = [];
-        let indexs = [];
-        const data = idx.search(queryWords.value);
-        for(var i = 0; i < data.length; i++){
-          indexs.push(...data[i]['result'])
-        }
-        const uniqueIndexs = indexs.filter(onlyUnique);
-        uniqueIndexs.forEach( v => results.value.push(documents[v]));
+        const queryResults = idx.search(queryWord.value);
+        const indexs = [].concat(...queryResults.map(qr => qr['result'])).filter(uniqueData);
+        indexs.forEach(index => results.value.push(posts[index]));
       }
 
-      function onlyUnique(value, index, array) {
+
+      function uniqueData(value, index, array) {
         return array.indexOf(value) === index;
       }
 
       function getSummary(str, n) {
         var r = /[^\x00-\xff]/g;
-        if (str.replace(r, "mm").length <= n) { return str; }
+        if (str.replace(r, "mm").length <= n) {
+           return str; 
+        }
         var m = Math.floor(n / 2);
         for (var i = m; i < str.length; i++) {
           if (str.substr(0, i).replace(r, "mm").length >= n) {
             return str.substr(0, i) + "...";
           }
         }
-        return str;
       }
 
       // 使用setup创建的必须全局返回
       return {
-        queryWords,
+        queryWord,
         results,
         search,
         getSummary
