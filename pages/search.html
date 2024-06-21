@@ -21,10 +21,20 @@ icon: search
   </div>
 </div>
 
-<script type="module">
+<script type="">
   const { createApp, ref } = Vue
-  import {posts as documents} from '/js/data.js'
-  console.log(documents);
+  {% assign counter = 0 %}
+  var documents = [
+  {%- for page in site.posts -%}
+      {
+        "id": {{ counter }},
+        "url": "{{ site.url }}{{ page.url }}",
+        "title": "{{ page.title }}",
+        "body": "{{ page.date | date: '%Y/%m/%d' }} - {{ page.content | markdownify | strip_html | replace: '\', '\\' }}"
+        {% assign counter = counter | plus: 1 %}
+      }
+      {% unless forloop.last %},{% endunless %}
+  {%- endfor -%}];
 
   // create index
   const idx = new FlexSearch.Document({
@@ -45,6 +55,9 @@ icon: search
     setup() {
       const queryWords = ref('');
       const results = ref([]);
+      import {posts} from '/js/data.js'
+      console.log(posts);
+
       function search(){
         results.value = [];
         let indexs = [];
