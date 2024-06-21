@@ -30,7 +30,7 @@ icon: search
         "id": {{ counter }},
         "url": "{{ site.url }}{{ page.url }}",
         "title": "{{ page.title }}",
-        "body": "{{ page.date | date: '%Y/%m/%d' }} - {{ page.content | markdownify | strip_html | replace: '\', '\\' }}"
+        "body": "{{ page.content | markdownify | replace: '.', '. ' | replace: '\', '\\' | replace: '</h2>', ': ' | replace: '</h3>', ': ' | replace: '</h4>', ': ' | replace: '</p>', ' ' | strip_html | strip_newlines | replace: '  ', ' ' | replace: '"', ' ' }}"
         {%- assign counter = counter | plus: 1 -%}
       }
       {%- unless forloop.last -%},{%- endunless -%}
