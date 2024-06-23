@@ -5,6 +5,16 @@ html, body{
     padding:0;
 }
 
+span.author{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.journal{
+    color: red;
+}
+
+
 body {
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,sans-serif;
     word-break: break-all;
@@ -34,7 +44,7 @@ h1, .h1{
 
 h1 a, .h1 a{
     font-size: 30px;
-    font-family: 'kaiti';
+    font-family: MONOSPACE;
     color: #ee4444
 }
 
@@ -74,8 +84,8 @@ article p{
     color: #444;
     line-height: 1.5em;
     font-size: 18px;
-    margin: 10px 0px;
-    font-family: 'kaiti', 'Times New Roman';
+    margin: 15px 0px;
+    font-family: MONOSPACE;
 }
 
 article img{
@@ -87,7 +97,7 @@ article img{
 article ul{
     font-size: 16px;
     line-height: 1.8em;
-    font-family: 'kaiti', 'Times New Roman';
+    font-family: MONOSPACE;
 }
 
 /* 侧边栏 */

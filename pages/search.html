@@ -1,0 +1,80 @@
+---
+layout: page
+title: 搜索
+icon: search
+---
+
+<!-- 引入搜索 -->
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/flexsearch.bundle.js"></script>
+
+<div id="app">
+  <input type="text" class="form-control" @keyup.enter="search" v-model="queryWord" placeholder="搜索" >
+  <div v-if="results.length != 0">
+    <br/>
+    <div class="result-item" v-for="result in results" :key="result.id">
+      <a :href="result.url" class="result-title"><h4>${result.title}$</h4></a>
+      <div>${result.url}$</div>
+      <p>${ getSummary(result.body, 160) }$</p>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  const { createApp, ref } = Vue
+  import { posts } from '/js/data.js';
+
+  // create index
+  const idx = new FlexSearch.Document({
+      cache: 100,
+      document: {
+          id: "id",
+          index: ["title", "body"]
+      },
+      tokenize: 'full', 
+      resolution: 5,
+      encode: str => str.trim().toLowerCase().split(/[\p{Z}\p{S}\p{P}\p{C}]+/u)
+  });
+  
+  posts.forEach(post => idx.add(post));
+
+  createApp({
+    delimiters: ["${", "}$"],
+    setup() {
+      const queryWord = ref('');
+      const results = ref([]);
+
+      function search(){
+        results.value = [];
+        const queryResults = idx.search(queryWord.value);
+        const indexs = [].concat(...queryResults.map(qr => qr['result'])).filter(uniqueData);
+        indexs.forEach(index => results.value.push(posts[index]));
+      }
+      
+
+      function uniqueData(value, index, array) {
+        return array.indexOf(value) === index;
+      }
+
+      function getSummary(str, n) {
+        var r = /[^\x00-\xff]/g;
+        if (str.replace(r, "mm").length <= n) { return str; }
+        var m = Math.floor(n / 2);
+        for (var i = m; i < str.length; i++) {
+          if (str.substr(0, i).replace(r, "mm").length >= n) {
+            return str.substr(0, i) + "...";
+          }
+        }
+      }
+
+      // 使用setup创建的必须全局返回
+      return {
+        queryWord,
+        results,
+        search,
+        getSummary
+      }
+    }
+  }).mount('#app')
+</script>
