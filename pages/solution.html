@@ -58,15 +58,14 @@
  <div id="app">
      <!-- 菜单 -->
     <b-navbar toggleable="lg"  fixed="top" variant="light" type="light">
-        <b-navbar-brand class="header-name" :to="{name: '#'}">工具集合</b-navbar-brand>
+        <b-navbar-brand class="header-name">工具集合</b-navbar-brand>
         <b-navbar-toggle class="custom-toggler" target="nav-collapse"></b-navbar-toggle>
         <b-collapse v-model="isNavbarCollapseOpen" id="nav-collapse" is-nav>
             <!-- Right aligned nav items -->
             <b-navbar-nav class="ml-auto">
             <b-nav-form></b-nav-form>
-            <b-nav-item href='https://iring.fun'>博客</b-nav-item>
-            <b-nav-item href='https://iring.fun/ifactor.html'>影响因子查询</b-nav-item>
-            <b-nav-item href='https://iring.fun/tools.html'>溶液配制</b-nav-item>
+            <b-nav-item href="{{ site.baseurl }}">博客</b-nav-item>
+            <b-nav-item href="{{ site.baseurl }}/pages/solution.html">溶液配制</b-nav-item>
             </b-navbar-nav>
         </b-collapse>
     </b-navbar>
