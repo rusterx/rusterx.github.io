@@ -1,4 +1,3 @@
-
 ---
 ---
 <!DOCTYPE html>
@@ -111,7 +110,7 @@
     <p v-if="errors.length">
         <b>请修正以下错误:</b>
         <ul>
-            <li v-for="error in errors" style="color:red">${ error }$</li>
+            <li v-for="error in errors" style="color:red"><{ error }></li>
         </ul>
     </p>
 
@@ -198,8 +197,8 @@
             </thead>
             <tbody>
                 <tr v-for="row in option1_rows" scope="row">
-                    <td>${ row.volume }$</td>
-                    <td>${ row.weight }$</td>
+                    <td><{ row.volume }></td>
+                    <td><{ row.weight }></td>
                 </tr>
             </tbody>
         </table>
@@ -214,8 +213,8 @@
             </thead>
             <tbody>
                 <tr v-for="row in option2_rows" scope="row">
-                    <td>${ row.weight }$</td>
-                    <td>${ row.volume }$</td>
+                    <td><{ row.weight }></td>
+                    <td><{ row.volume }></td>
                 </tr>
             </tbody>
         </table>
@@ -230,8 +229,8 @@
             </thead>
             <tbody>
                 <tr v-for="row in option3_rows" scope="row">
-                    <td>${ row.wp }$</td>
-                    <td>${ row.mc }$</td>
+                    <td><{ row.wp }></td>
+                    <td><{ row.mc }></td>
                 </tr>
             </tbody>
         </table>
@@ -246,8 +245,8 @@
             </thead>
             <tbody>
                 <tr v-for="row in option4_rows" scope="row">
-                    <td>${ row.wp }$</td>
-                    <td>${ row.mc }$</td>
+                    <td><{ row.wp }></td>
+                    <td><{ row.mc }></td>
                 </tr>
             </tbody>
         </table>
@@ -263,7 +262,7 @@
 
     var vm = new Vue({
         el:'#app',
-        delimiters: ['${', '}$'],
+        delimiters: ['<{', '}>'],
         data: {
             isNavbarCollapseOpen: false,
             select_concentration_unit:'0.001',
