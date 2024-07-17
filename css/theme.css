@@ -132,7 +132,9 @@ footer a {
     line-height: 30px;
 }
 
-pre{
+/* 代码高亮 */
+div.highlight{
+    border-radius: 5px;
     border: 1px solid #f0f0f0;
 }
 
