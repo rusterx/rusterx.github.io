@@ -133,7 +133,7 @@ footer a {
 }
 
 /* 代码块 */
-pre.highlight{
+div.highlight{
     border-radius: 5px;
     border: 1px solid #ddd;
 }
