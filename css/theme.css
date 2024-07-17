@@ -135,7 +135,10 @@ footer a {
 /* 代码块 */
 pre code{
     border-radius: 5px;
-    border: 1px solid #f0f0f0;
+}
+
+div.highlight{
+    border: 1px solid #ddd;
 }
 
 .btn{
