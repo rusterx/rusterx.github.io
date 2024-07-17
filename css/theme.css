@@ -132,15 +132,10 @@ footer a {
     line-height: 30px;
 }
 
-/* 代码高亮 */
-div.highlight{
-    border-radius: 5px;
-    border: 1px solid #f0f0f0;
-}
-
 /* 代码块 */
 pre code{
     border-radius: 5px;
+    border: 1px solid #f0f0f0;
 }
 
 .btn{
