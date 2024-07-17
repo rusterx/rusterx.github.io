@@ -138,6 +138,11 @@ div.highlight{
     border: 1px solid #f0f0f0;
 }
 
+/* 代码块 */
+pre code{
+    border-radius: 5px;
+}
+
 .btn{
     border-radius: 0px;
 }
