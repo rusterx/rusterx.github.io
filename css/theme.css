@@ -135,9 +135,6 @@ footer a {
 /* 代码块 */
 pre code{
     border-radius: 5px;
-}
-
-div.highlight{
     border: 1px solid #ddd;
 }
 
