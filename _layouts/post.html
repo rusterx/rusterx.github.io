@@ -21,49 +21,47 @@
     {% include nav.html %}
     <div class="main container container-center">
         <div class="row">
-            <div class="col-md-12">    
-              <article>
-                <div class="header">
-                    <h1><a href="{{ site.baseurl}}{{ page.url }}">{{ page.date | date: "%Y/%m/%d" }} - {{ page.title }}</a></h1>
-                    {% if site.comments and page.comments %}
-                        {% if site.disqus != '' %}
-                        <p class="author"><a href="#disqus_thread" data-disqus-identifier="{{ page.url | slugify }}">评论</a></p>
-                        {% elsif site.isso != '' %}
-                        <p class="author"><a href="{{ site.baseurl }}{{ page.url }}{{ site.isso_suffix }}#isso-thread">评论</a></p>
-                        {% endif %}
-                    {% endif %}
-                <hr/>
-                </div>
-
-                <div class="content">
-                  {{ content }}
-                </div>
-    
-                {% if page.comments %}
-                    {% if site.disqus != '' %}
-                    <div id="disqus_thread">
-                        <noscript>请启用javascript功能以查看 <a href="http://disqus.com/?ref_noscript">由Disqus驱动的评论</a></noscript>
-                        <a href="http://disqus.com" class="dsq-brlink">评论由 <span class="logo-disqus">Disqus</span>驱动</a>
-                    </div>
-                    {% elsif site.isso != '' %}
-                    <section id="isso-thread"></section>
-                    {% endif %}
-                {% endif %}
-    
-                <div class="social-share"></div>
-                <!--  css & js for share widgets-->
-                <link rel="stylesheet" href="{{ site.cdn.css }}/share.min.css">
-                <script src="{{ site.cdn.js }}/social-share.min.js"></script>
-    
-              </article>
-              <div class="pagination">
-                  {% if page.next %}
-                    <a class="btn btn-default next" href="{{ site.baseurl}}{{ page.next.url }}">更新的文章</a>
+            <article>
+              <div class="header">
+                  <h1><a href="{{ site.baseurl}}{{ page.url }}">{{ page.date | date: "%Y/%m/%d" }} - {{ page.title }}</a></h1>
+                  {% if site.comments and page.comments %}
+                      {% if site.disqus != '' %}
+                      <p class="author"><a href="#disqus_thread" data-disqus-identifier="{{ page.url | slugify }}">评论</a></p>
+                      {% elsif site.isso != '' %}
+                      <p class="author"><a href="{{ site.baseurl }}{{ page.url }}{{ site.isso_suffix }}#isso-thread">评论</a></p>
+                      {% endif %}
                   {% endif %}
-                  {% if page.previous %}
-                    <a class="btn btn-default previous" href="{{ site.baseurl}}{{ page.previous.url }}">更旧的文章</a>
-                  {% endif %}
+              <hr/>
               </div>
+
+              <div class="content">
+                {{ content }}
+              </div>
+  
+              {% if page.comments %}
+                  {% if site.disqus != '' %}
+                  <div id="disqus_thread">
+                      <noscript>请启用javascript功能以查看 <a href="http://disqus.com/?ref_noscript">由Disqus驱动的评论</a></noscript>
+                      <a href="http://disqus.com" class="dsq-brlink">评论由 <span class="logo-disqus">Disqus</span>驱动</a>
+                  </div>
+                  {% elsif site.isso != '' %}
+                  <section id="isso-thread"></section>
+                  {% endif %}
+              {% endif %}
+  
+              <div class="social-share"></div>
+              <!--  css & js for share widgets-->
+              <link rel="stylesheet" href="{{ site.cdn.css }}/share.min.css">
+              <script src="{{ site.cdn.js }}/social-share.min.js"></script>
+  
+            </article>
+            <div class="pagination">
+                {% if page.next %}
+                  <a class="btn btn-default next" href="{{ site.baseurl}}{{ page.next.url }}">更新的文章</a>
+                {% endif %}
+                {% if page.previous %}
+                  <a class="btn btn-default previous" href="{{ site.baseurl}}{{ page.previous.url }}">更旧的文章</a>
+                {% endif %}
             </div>
             {% include talkyard-comments.html %}
             {% include disqus-comments.html %}
