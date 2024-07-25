@@ -15,6 +15,9 @@ baseurl: ""
 pageurl: "/pages"
 downloadurl: "/attachments"
 
+talkyard_server_url: https://site-1hs2mnsxaq.talkyard.net
+talkyard_script_url: https://c1.ty-cdn.net/-/talkyard-comments.min.js
+
 # CDN 对应的域名
 cdn:
   base: "https://jekyll-1251110281.file.myqcloud.com"

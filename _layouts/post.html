@@ -34,10 +34,10 @@
                     {% endif %}
                 <hr/>
                 </div>
-                
-                <content>
-                    {{ content }}
-                </content>
+
+                <div class="content">
+                  {{ content }}
+                </div>
     
                 {% if page.comments %}
                     {% if site.disqus != '' %}
@@ -67,7 +67,7 @@
             </div>
         </div>
     </div>
-    
+    {% include talkyard-comments.html %}
     {% include disqus-comments.html %}
 </div>
 
