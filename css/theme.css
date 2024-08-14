@@ -44,7 +44,7 @@ h1, .h1{
 
 h1 a, .h1 a{
     font-size: 30px;
-    font-family: MONOSPACE;
+    /* font-family: MONOSPACE; */
     color: #ee4444
 }
 
@@ -85,7 +85,7 @@ article p{
     line-height: 1.5em;
     font-size: 18px;
     margin: 15px 0px;
-    font-family: MONOSPACE;
+    /* font-family: MONOSPACE; */
 }
 
 article img{
@@ -98,7 +98,7 @@ article img{
 article ul{
     font-size: 16px;
     line-height: 1.8em;
-    font-family: MONOSPACE;
+    /* font-family: MONOSPACE; */
 }
 
 /* 侧边栏 */
