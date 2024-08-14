@@ -116,6 +116,11 @@ aside a{
     color: #555;
 }
 
+blockquote{
+    padding: 10px 10px;
+    border-left: 5px solid #ab3737;
+}
+
 /* 底部 */
 footer {
     text-align: center;
