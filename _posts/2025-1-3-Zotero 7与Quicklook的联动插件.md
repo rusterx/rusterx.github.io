@@ -18,7 +18,7 @@ zotero 6的时候，大家可以使用quicklook和zotero连用，点击Space键�
 1. 下载插件，<https://gitee.com/rusterx/zotero.quicklook/releases/download/v1.0.6/zotero.quicklook.zip>，解压缩之后包含 `bootstrap.js` `manifest.json`以及`logo.png`等文件。
 2. 根据自己实际的quicklook.exe的路径，修改 `bootstrap.js`文件的内容。
 
-```js {9-10}
+```js
 try {
 	// if(supportedFileExtensions.includes(extension)){
 	//   let exePath = "D:\\Documents\\VSCode\\zotero.quicklook\\app.js";
