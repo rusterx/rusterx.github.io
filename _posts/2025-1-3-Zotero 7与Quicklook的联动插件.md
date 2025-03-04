@@ -45,5 +45,43 @@ catch (e) {
 ## 插件优点以及相关快捷键
 
 1. 该插件支持预览很多文件，只要quicklook安装了相关的插件就可以。
-2. Space键，调用quicklook预览PDF
+2. Space键，调用quicklook预览PDF【副作用是在别的地方按Space键也会触发预览】
 3. 上下箭头，如果选择的为多个文件，或者多个item【包含附件】，那么上下箭头可以实现循环切换文件的预览
+
+---
+
+## 脚本实现
+
+如果你已经安装了Action & Tags这个插件，还可以通过以下脚本，再设置快捷键实现预览，不需要额外安装插件。
+
+```js
+if (item) return;
+var item = items[0];
+if (!item) return "[Quicklook] item is empty";
+
+var targetPath = null;
+if(item.isRegularItem()){
+	var attachmentIDs = item.getAttachments();
+    for (let id of attachmentIDs) {
+        let attachment = Zotero.Items.get(id);
+		targetPath = attachment.getFilePath();
+		break;
+    }
+}
+
+if(item.isFileAttachment()){
+	targetPath = item.getFilePath();
+}
+
+if(targetPath == null){
+	return "[Quicklook] target Path is empty";
+}
+
+try{
+    var exePath = "C:\\Users\\xing\\AppData\\Local\\Programs\\QuickLook\\QuickLook.exe";
+    Zotero.launchFileWithApplication(targetPath, exePath);
+} catch(e) {
+    Zotero.debug(e);
+    Zotero.showZoteroError(e.message);
+}
+```
